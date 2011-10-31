@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+int n,r,l;
+
+struct PT
+{
+  int x,y;
+  bool fd;
+};
+PT pt[50000];
+
+int main()
+{
+  
+  while(scanf("%d%d%d",&n,&r,&l)!=EOF)
+    {
+      int i;
+      for(i=0;i<n;i++)
+	{
+	  scanf("%d%d",&pt[i].x,&pt[i].y);
+	  pt[i].
+	}
+      for
+    }
+]

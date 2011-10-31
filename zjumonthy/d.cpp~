@@ -1,0 +1,101 @@
+#include<iostream>
+#include<string>
+#define MAXN 52
+using namespace std;
+
+string a[ MAXN ] , b[ MAXN ];
+int pos[ MAXN ] , op[ MAXN ] , des[ MAXN ];
+int ans , n , m ;
+
+class queue
+{
+public:
+  int cnt;
+  int pos[ MAXN ];
+};
+
+queue q[ MAXN * MAXN * MAXN ];
+
+void sort( int i , int j )
+{
+  if( i >= j ) return ;
+  int m , n , idxt;
+  string k , t ;
+  m = i , n = j , k = b[ i + j >> 1 ];
+  while( m <= n )
+    {
+      while( b[ m ] < k ) ++ m;
+      while( b[ n ] > k ) -- n;
+      if( m <= n )
+	{
+	  t = b[ m ] ; b[ m ] = b[ n ] ; b[ n ] = t ;
+	  idxt = op[ m ] ; op[ m ] = op[ n ] ; op[ n ] = idxt ;
+	  ++ m , -- n ;
+	}
+    }
+  sort( i , n );
+  sort( m , j );
+  return ;
+}
+
+int pf( int ps , int x , queue p )
+{
+  for(int i = ps + 1 ; i <= m ; ++ i )
+    if( p.pos[ i ] == x ) return i;
+  return 0 ;
+}
+
+int bfs()
+{
+  int i , j , front , rear , ans = 200000000, t;
+  queue p ;
+  bool sign ;
+  front = 0 , rear = 1;
+  q[ 1 ].cnt = 0 ;
+  for( i = 1 ; i <= m ; ++ i ) q[ 1 ].pos[ i ] = pos[ i ];
+  do{
+    p = q[ ++ front ];
+    //cout<<"q : ";
+    //for( i = 1 ; i <= m ; ++ i ) cout<<p.pos[ i ]<<" ";cout<<"\n";
+    sign = false;
+    for( i = 1 ; i <= m ; ++ i )
+      if( p.pos[ i ] not_eq op[ i ] )
+	{
+	  for( i = 1 )
+	  
+	  
+	  q[ ++ rear ] = p;
+	  q[ rear ].pos[ t ] = q[ rear ].pos[ i ];
+	  q[ rear ].pos[ i ] = op[ i ] ;
+	  q[ rear ].cnt ++ ;
+	  if( i + 1 not_eq t ) q[ rear ].cnt ++ ;
+	  sign = true;
+	  break; 
+	}
+    if( not sign and ans > p.cnt )
+      ans = p.cnt;
+  }while( front < rear );
+  return ans ;
+}
+
+int main()
+{
+  int i , j ;
+  while( cin>>n>>m )
+    {
+      for( i = 1 ; i <= n ; ++ i )
+	{
+	  for( j = 1 ; j <= m ; ++ j )
+	    {
+	      cin>>a[ j ];
+	      b[ j ] = a[ j ];
+	      pos[ j ] = op[ j ] = j ;
+	    }
+	  sort( 1 , m );
+	  //for( j = 1 ; j <= m ; ++ j ) cout<<op[ j ]<<" ";cout<<"\n"; 
+	  ans += bfs();
+	}
+      cout<<ans<<"\n";
+    }
+  return 0 ;
+}
