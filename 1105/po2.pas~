@@ -1,0 +1,38 @@
+program postoffice_poj1160;
+var
+   cost	 : array [ 0..300 , 0..300 ] of longint;
+   f	 : array [ 0..30 , 0..300 ] of longint;
+   pos	 : array [ 0..300 ] of longint;
+   v,p	 : integer;
+   i,j,k,mid,min : integer;
+begin
+   { init }
+   readln( v , p );
+   for i := 1 to v do
+      read( pos[ i ] );
+   readln;
+   
+   for i := 1 to v do
+   begin
+      cost[ i , i ] := 0;
+      for j := i to v do
+      begin
+	 cost[ i , j ] := 0 ;
+	 mid := ( i + j ) shr 1 ;
+	 for k := i to mid - 1 do
+	    cost[ i , j ] := cost[ i , j ] + pos[ mid ] - pos[ k ];
+	 for k := mid + 1 to j do
+	    cost[ i , j ] := cost[ i , j ] + pos[ k ] - pos[ mid ];
+      end;
+   end;
+
+   for i := 0 to v do
+      f[ 1 , i ] = cost[ 1 , i ];
+   { dp }
+   for i := 2 to p do
+      for j := i to v do
+      begin
+	 min := 3000000;
+	 
+      end;
+end.

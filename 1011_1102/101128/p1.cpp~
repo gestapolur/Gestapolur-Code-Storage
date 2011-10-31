@@ -1,0 +1,25 @@
+#include<iostream>
+#define MAXN 52
+using namespace std;
+
+int w[MAXN][MAXN];
+
+class RobotSimulation
+{
+public:
+  int cellsVisited(string program, int times)
+  {
+    int ans = 0,n,i;
+    n = program.size();
+    for(i = 0 ; i < n ; ++ i)
+      switch program[i]
+  case 'U'
+    return ans;
+  }  
+};
+
+int main()
+{
+
+  return 0;
+}

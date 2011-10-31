@@ -1,0 +1,18 @@
+//timus1163
+#include<iostream>
+#include<cmath>
+#define PREC 0.01
+using namespace std;
+
+double dist( double x1 , double y1 , double x2 , double y2 )
+{ return sqrt( ( x1 - x2 ) * ( x1 - x2 ) + ( y1 - y2 )*( y1 - y2 ) ); }
+
+void turn
+
+int main()
+{
+  int i ;
+  //init
+  for( i = 1 ; i <= 8 ; ++ i )
+    {}
+}

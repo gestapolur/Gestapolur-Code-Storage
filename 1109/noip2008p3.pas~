@@ -1,0 +1,47 @@
+program noip2008p3;
+const
+   MAXN = 51;
+var 
+   f , w : array[ 1..MAXN , 1..MAXN , 1..MAXN ] of longint;
+   n , m : longint;
+
+procedure init();
+var
+   i , j : integer;
+begin 
+   readln( n , m );
+   for i := 1 to n do
+      for j := 1 to m do
+         read( w[ i , j ] );
+   for i := 1 to n do
+      for j := 1 to m do
+      begin
+      end;
+   
+end; { init }
+
+procedure dp();
+var
+   i , j , k , p1 , p2 : integer;
+begin
+   for k := 2 to m do
+      for i := 1 to n - 1 do
+         for j := i + 1 to n do
+            if ( ) and () and ()
+               f[ i , j , k ] := f[] + f[] + w[] + w[];
+end; { dp }
+
+procedure output();
+begin 
+   writeln( f[ n , n , m ] );
+end; { output }
+
+begin
+
+   init();
+
+   dp();
+
+   output();
+   
+end.

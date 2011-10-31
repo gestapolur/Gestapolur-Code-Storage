@@ -1,0 +1,22 @@
+//tarjan test
+#include<iostream>
+using namespace std;
+
+int dfn[ MAXN ];
+
+void tarjan()
+{
+  return ;
+}
+
+void init()
+{
+  return ;
+}
+
+int main()
+{
+  init();
+  tarjan();
+  return 0;
+}

@@ -1,0 +1,10 @@
+#include<iostream>
+using namespace std;
+
+int main()
+{
+  int a ;
+  a = 3;
+  cout<<( 1 << ( a - 1))<<"\n";
+  return 0;
+}

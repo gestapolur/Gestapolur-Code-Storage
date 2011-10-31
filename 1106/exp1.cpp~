@@ -1,0 +1,41 @@
+#include<iostream>
+#define MAXN 1000
+#define MAXM 1000
+using namespace std;
+
+calss student
+{
+ public:
+  string name;
+  int cl_name[ MAXM ];
+  int score[ MAXM ];
+};
+
+int student[ MAXN ];
+int stot;//学生总数
+
+int main()
+{
+  int i , ins = 1 ;
+  bool first;
+  first = false;
+  
+  while( ins ){
+    if( first )//输入学生总数
+      {
+	cin>>stot;
+	first = false;
+      }
+    //输入课程编号m和该课程n个学生的成绩
+    cin>>m>>n;
+    for( i = 1 ; i <= n ; ++ i )
+      {
+	stu_data.push_back();
+	stot = sud_data.size();
+	cin>>stu_data[ i ].name>>stu_data[ i ].
+      }
+    
+  }
+  
+  return 0;
+}

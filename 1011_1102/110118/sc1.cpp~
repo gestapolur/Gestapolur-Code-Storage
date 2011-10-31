@@ -1,0 +1,27 @@
+#include<iostream>
+#define MAXN 2000000
+using namespace std;
+
+int n;
+int f[ MAXN ];
+int a[ 12 ];
+
+int main()
+{
+  int i,j,r,tmp;
+  for(i = 0 ; i < n ; ++ i)
+    state = state | ( 1 << i);
+  f[ 0 ] = 1;
+  for(i = 1 ; i <= state ; ++ i)
+    {
+      r = 0;
+      for(j = 1 ; j <= n ; ++ j)
+	if( i >> (j - 1) & 1 )
+	  ++r;
+      for(j = 1 ; j <= n ; ++ j)
+	if(( a[ r ] ^ (i >> (j - 1)) ) & 1 == 1 ) // if j-th digit is 1
+	  f[ i ] = f[ i ] + f[ i ^ (1 << (j - 1))];
+    } 
+  cout<<f[ state ]<<"\n";
+  return 0;
+}

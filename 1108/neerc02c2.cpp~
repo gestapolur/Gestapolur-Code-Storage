@@ -1,0 +1,98 @@
+//NEERC 02 C
+#include<iostream>
+#define MAXN 105
+using namespace std;
+
+int wi , hi , n ;
+int maxw , mr , mc ;
+int pr[ MAXN ] , pc[ MAXN ] ;
+
+bool inside( int sx , int ex , int sy ,int ey , int x  )
+{
+  if( pr[ x ] > sx and pr[ x ] < ex and pc[ x ] < ey and pc[ x ] > sy )
+    return true;
+  return false;
+}
+
+void work()
+{
+  int i , j , k , v , wide , sy , ey ;
+  for( i = 1 ; i < n - 1 ; ++ i )
+    for( j = i + 2 ; j <= n ; ++ j )
+      if( pr[ i ] not_eq pr[ j ])
+	{
+	  //cout<<i<<" "<<j<<" !! \n";
+	  for( k = i + 1 ; k < j ; ++ k )
+	    {
+	      sy = pc[ i ] < pc[ j ] ? pc[ i ] : pc[ j ] ;
+	      ey = pc[ i ] > pc[ j ] ? pc[ i ] : pc[ j ] ;
+
+	      if( pc[ k ] <= sy or pc[ k ] >= ey )
+		{
+		  //cout<<" into \n ";
+		  sy = sy < pc[ k ] ? sy : pc[ k ];
+		  ey = ey > pc[ k ] ? ey : pc[ k ];
+
+		for( v = 1 ; v <= n ; ++ v )
+		  if(v not_eq i and v not_eq j and v not_eq k 
+		     and inside( pr[ i ] , pr[ j ] , sy , ey , v ) ) break;
+		if( v == n + 1 )
+		  {	  
+		    
+		    wide = ( ey - sy ) < ( pr[ j ] - pr[ i ] ) ? ( ey - sy ) : ( pr[ j ] - pr[ i ] );
+		    if( wide > maxw )
+		      {
+			maxw = wide;
+			mr = pr[ i ] , mc = sy ;
+		      }
+		  }
+		}
+	    }
+	}
+  cout<<mc<<" "<<mr<<" "<<maxw<<"\n";
+  return ;
+}
+
+void sort( int i , int j)
+{
+  if( i >= j ) return ;
+  int p , q , t , idx1 , idx2 ;
+  p = i , q = j , idx1 = pr[ i + j >> 1 ] , idx2 = pc[ i + j >> 1 ];
+  while( p <= q )
+    {
+      while( pr[ p ] < idx1 or ( pr[ p ] == idx1 and pc[ p ] < idx2 ) ) ++ p ;
+      while( pr[ q ] > idx1 or ( pr[ q ] == idx1 and pc[ q ] > idx2 ) ) -- q ;
+      if( p <= q )
+	{ 
+	  
+	  t = pr[ p ] ; pr[ p ] = pr[ q ]; pr[ q ] = t;
+	  t = pc[ p ] ; pc[ p ] = pc[ q ]; pc[ q ] = t;
+	  ++ p , -- q ;
+	}
+    }
+  sort( i , q );
+  sort( p , j );
+  return ;
+}
+
+int main()
+{
+  int i , j , tr , tc ;
+  cin>>n>>wi>>hi;
+  pr[ n + 1 ] = 0 , pc[ n + 1 ] = 0 ;
+  pr[ n + 2 ] = 0 , pc[ n + 2 ] = wi;
+  pr[ n + 3 ] = hi , pc[ n + 3 ] = 0;
+  pr[ n + 4 ] = hi , pc[ n + 4 ] = wi;
+  for( i = 1 ; i <= n ; ++ i )
+    cin>>pc[ i ]>>pr[ i ];
+  n += 4;
+  //cout<<n<<"\n";
+  //for( i = 1 ; i <= n ; ++ i ) cout<<pc[ i ]<<" "<<pr[ i ]<<"\n";
+  sort( 1 , n );
+  //test
+  //cout<<"\n";
+  //cout<<n<<"\n";
+  //for( i = 1 ; i <= n ; ++ i ) cout<<pc[ i ]<<" "<<pr[ i ]<<"\n";
+  work();
+  return 0;
+}

@@ -1,0 +1,80 @@
+/**/
+#include<iostream>
+#define MAXN 102 
+using namespace std;
+
+int n , m , s , e;
+int lnk[ MAXN ][ MAXN ] , w[ MAXN ][ MAXN ];
+int dist[ MAXN ];
+
+void dfs()
+{
+
+}
+
+void init()
+{
+  int i , j , u , v , wi ;
+  cin>>n>>m>>s>>e;
+  ++ s , ++ e ;
+  for( i = 1 ; i <= m ; ++ i )
+    {
+      cin>>u>>v>>wi;
+      ++ v , ++ u;
+      w[ u ][ v ] = wi;
+      w[ v ][ u ] = wi;
+      lnk[ u ][ ++ lnk[ u ][ 0 ] ] = v ;
+      lnk[ v ][ ++ lnk[ v ][ 0 ] ] = u ;
+    }
+
+  //count the differ foods  
+  for( i = 1 ; i <= n ; ++ i )
+    { cin>>ty[ i ]; pos[ i ] = i ;}
+
+  for( i = 1 ; i < n ; ++ i )
+    for( j = i + 1 ; j <= n ; ++ j )
+      if( ty[ i ] >  ty[ j ] )
+	{  
+	  wi = ty[ i ] ; ty[ i ] = ty[ j ] ; ty[ j ] = wi ; 
+	  wi = pos[ i ] ; pos[ i ] = pos[ j ] ; pos[ j ] = wi;  
+	}
+
+  toc = 1;
+
+  for( i = 2 ; i <= n ; ++ i )
+    if( ty[ i ] == ty[ i - 1 ] )
+      type[ pos[ i ] ] = type[ pos[ i - 1 ] ];
+    else
+      type[ pos[ i ] ] = type[ pos[ i - 1 ] ] + 1 , ++ toc;
+  
+  ans = INF;
+
+  return ;
+}
+
+void output()
+{
+  if( ans not_eq INF ) cout<<ans<<"\n";
+  else cout<<-1<<"\n";
+
+  memset( q , 0 , sizeof( q ) );
+  memset( lnk , 0 , sizeof( lnk ) );
+  memset( w , 0 , sizeof( w ) );
+  return ;
+}
+
+int main()
+{
+  int t;
+  cin>>t;
+  while( t -- )
+    {
+      init();
+     
+      bfs();
+     
+      output();
+    }  
+
+  return 0;
+}

@@ -1,0 +1,39 @@
+//high qulity minus
+#include<iostream>
+#include<string>
+#define MAXN 1001
+using namespace std;
+
+string ca,cb;
+int a[ MAXN ],b[ MAXN ];
+
+int* mins(int a[] , int b[])
+{
+  int *c,i;
+  c = new int [ a[ 0 ] > b[ 0 ] ? a[ 0 ] : b[ 0 ] + 2];
+  c[ 0 ] = a[ 0 ] > b[ 0 ] ? a[ 0 ] : b[ 0 ];
+  for(i = 1 ; i <= c[ 0 ] ; ++ i)
+    c[ i ] = 0;
+
+  while(c[ c[ 0 ] ] == 0 and c[ 0 ] > 1)
+    --c[ 0 ];
+  
+  for(i = c[ 0 ] ; i > 0 ; -- i)
+    cout<<c[ i ]<<" ";
+  cout<<"\n";
+  return 0;
+}
+
+void init()
+{
+  cin>>ca>>cb;
+  for(i = 0 ; i < a[ 0 ] ; ++ i)
+    a[ i ] = ca[ i ]
+}
+
+int main()
+{
+  init();
+  mins(a,b);
+  return ;
+}

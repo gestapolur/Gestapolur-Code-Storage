@@ -1,0 +1,123 @@
+//timus 1165
+#include<iostream>
+#include<cstring>
+#define MAXN 202
+using namespace std;
+
+int a[ MAXN ] , ans[ MAXN ] , tans[ MAXN ] ;
+int fi[ MAXN ] , la[ MAXN ];
+char ca[ MAXN ];
+
+int *min1( int a [ ] )
+{
+  int i = 1 ;
+  --a[ 1 ];
+  if( a[ i ] < 0 )
+    {
+      a[ i ] += 10;
+      -- a[ i + 1 ];
+      ++ i ;
+    }
+  while( a[ a[ 0 ] ] == 0 )
+    -- a[ 0 ];
+  return a;
+}
+
+int *add1( int a [ ] )
+{
+  int i = 1 ;
+  a[ 1 ] ++ ;
+  while( a[ i ] == 10 )
+    {
+      a[ i ] = 0 ;
+      a[ i + 1 ] ++ ;
+      ++ i ;
+    }
+  if( a[ a[ 0 ] + 1 ] > 0 )
+    ++ a[ 0 ];
+  return a ;
+}
+
+bool cmp( int a[ ] , int b[ ] )
+{
+  if( a[ 0 ] not_eq b[ 0 ] ) return false;
+  for( int i = a[ 0 ] ; i > 0 ; -- i )
+    if( a[ i ] not_eq b[ i ] ) 
+      return false;
+  return true;
+}
+
+void dfs( int cl , int r , int pre [ ] )
+{
+  if( cl + pre[ 0 ] > r ) return false;
+  int i ;
+  int c[ MAXN ];
+  c[ 0 ] = cr - cl + 1 ;
+  for( i = cl ; l <= cr ; ++ i )
+    c[ i - cl + 1 ] = a[ i ];
+  pre = add1( pre );
+  if( cmp( c , pre ) )
+    {
+      if( cr < r )
+        dfs( cr + c[ 0 ] + 1 c );
+      else return true;
+    }
+  return false ;
+}
+
+void check( int l , int r )
+{
+  int i;
+  int b[ MAXN ]; b[ 0 ] = 0 ;
+  for( int k = 1 ; k <= r - l + 1 ; ++ k )
+    {
+      b[ 0 ] = k ;
+      for( i = 1 ; i <= k ; ++ i )
+        b[ i ] = a[ l + k - i ];
+      for( i = b[ 0 ] ; i > )
+      if ( dfs( l + b[ 0 ] + 1 , r , b ) )
+        
+        { 
+          //check la and fi ,refresh the ans
+        }
+    }
+  return ;
+}
+
+void work()
+{
+  int l , r , i ;
+  for( l = 1 ; l <= a[ 0 ] ; ++ l )
+    for( r = l + 1 ; r <= a[ 0 ] ; ++ r )
+      check( l , r );
+  //la = a[ r + 1 ] , fi = a[ l - 1 ] - 1 
+  for( i = r + 1 ; i <= a[ 0 ] ; ++ i )
+  return ;
+}
+
+void init()
+{
+  int i;
+  cin>>ca;
+  a[ 0 ] = strlen( ca );
+  for( i = 0 ; i < a[ 0 ] ; ++ i )
+    a[ i + 1 ] = ca[ i ] - 48;
+  
+  //init ans
+  for( i = 0 ; i <= a[ 0 ] ; ++ i )
+    ans[ i ] = a[ i ];
+
+  return ;
+}
+
+int main()
+{
+  init();
+
+  work();
+  //output
+  for( int i = ans[ 0 ] ; i > 0 ; -- i )
+    cout<<ans[ i ];
+  cout<<"\n";
+  return 0 ;
+}

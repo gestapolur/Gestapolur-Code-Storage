@@ -1,0 +1,11 @@
+//2010 round c a
+#include<iostream>
+using namespace std;
+
+int main()
+{
+  cin>>n;
+  for(i = 1 ; i <= m ; ++ i)
+    
+  return 0;
+}

@@ -1,0 +1,16 @@
+program ex1;
+const
+   MAXN	= 10000;
+var 
+   i,j,n : longint;
+   a   : array [ 0..MAXN ][ 0..MAXN] of longint;
+       
+begin
+   readln(n);
+   f[ 0 ][ 1 ] := 1 ;
+   f[ 1 ][ 0 ] := 1 ;
+   for i := 1 to n do
+      for j := 1 to n do
+	 f[ i ][ j ] := f[ i ][ j - 1 ] + f[ i - 1 ][ j ];
+   writeln(f[ n ][ n ]);
+end.

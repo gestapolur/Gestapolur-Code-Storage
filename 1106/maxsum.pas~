@@ -1,0 +1,126 @@
+program maxsum;
+{
+var 
+   n,ans		    : longint;
+   a,st,lmin,rmin,divl,divr : array[0..50001] of integer;
+   tt,t			    : integer;
+   i			    : longint;
+
+function min(a,b : longint ):longint;
+begin
+   if a < b then
+      exit( a )
+   else
+      exit( b );
+end;
+
+begin
+   readln( t );
+   tt := 1 ;
+   while tt <= t do
+   begin
+      readln( n );
+      for i := 1 to n do
+	 read(a[ i ]);
+      readln;
+      
+      for i := 1 to n do
+      begin
+	 st[ i ] := st[ i - 1 ] + a[ i ];
+	 lmin[ i ] := min( st[ i ] , lmin[ i - 1 ]);
+	 divl[ i ] := st[ i ] - lmin[ i - 1 ];
+      end;
+      
+      for i := n downto 1 do
+      begin
+	 rmin[ i ] := min( st[ n ] - st[ i - 1 ] , rmin[ i + 1 ]);
+	 divr[ i ] := st[ n ] - st[ i - 1 ] - rmin[ i + 1 ];
+      end;
+      
+      ans := 0 ;
+      for i := n - 1 downto 1 do
+	 if ans < divl[ i ] + divr[ i + 1 ] then
+	    ans := divl[ i ] + divr[ i + 1 ];
+      writeln('Case #',tt,': ',ans);
+      // test
+      for i := 1 to n do
+	 write(st[ i ],' ');
+      writeln;
+      for i := 1 to n do
+	 write(lmin[ i ],' ');
+      writeln;
+      for i := 1 to n do
+	 write(rmin[ i ],' ');
+      writeln;
+      for i := 1 to n do
+	 write(divl[ i ],' ');
+      writeln;
+      for i := 1 to n do
+	 write(divr[ i ],' ');
+      writeln;
+      inc( tt );
+   end;
+end.
+}
+var
+   a,f,s   : array[ 1..50000 ] of longint;
+   n,m,ans : longint;
+   i,t,tt  : longint;
+
+procedure sort(i,j : longint );
+var
+   m,n,t,k : longint;
+begin
+   if i < j then
+   begin
+      m := i ; n := j ; k := s[ ( i + j ) shr 1 ];
+      while m <= n do
+      begin
+	 while s[ m ] > k do inc( m );
+	 while s[ n ] < k do dec( n );
+	 if m <= n then
+	 begin
+	    t := s[ m ] ; s[ m ] := s[ n ] ; s[ n ] := t;
+	    inc( m );
+	    dec( n );
+	 end;
+      end;
+      sort( i , n );
+      sort( m , j );
+   end;
+end;
+
+begin
+   readln( t );
+   tt := 1 ;
+   while tt <= t do
+   begin
+      readln( n );
+      for i := 1 to n do
+      begin
+	 read( a[ i ] );
+	 f[ i ] := i;
+      end;
+      
+      for i := 2 to n do
+	 if (a[ i ] > 0) and (a[ i - 1 ] > 0) then
+	    f[ i ] := f[ i - 1 ];
+      m := f[ n ];
+      
+      for i := n + 1 downto 1 do
+	 s[ i ] := 0 ;
+
+      for i := 1 to n do
+	 inc(s[ f[ i ] ] , a[ i ] );
+      
+      for i := 1 to n do
+	 write( f[ i ] ,' ');
+      writeln;
+      
+      sort( 1 , n );
+      ans := s[ 1 ] + s[ 2 ];
+      
+      writeln('Case #',tt,': ',ans );
+      inc( tt );
+   end;
+end.

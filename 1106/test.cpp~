@@ -1,0 +1,12 @@
+#include<iostream>
+#include<string.h>
+#include<cstdlib>
+#include<cstdio>
+using namespace std;
+
+int main()
+{
+  int a,b;
+  printf("%d\n",strlen("\065\n"));//ff\n"));
+  return 0;
+}

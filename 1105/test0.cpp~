@@ -1,0 +1,12 @@
+#include<cstdlib>
+#include<cstdio>
+
+using namespace std;
+
+FILE *in,*out;
+
+int main()
+{
+  in = fopen(stdin,"test.in","r");
+
+}

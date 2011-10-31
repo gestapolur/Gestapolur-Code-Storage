@@ -1,0 +1,15 @@
+#include<iostream>
+#define MAXN 1000
+using namespace std;
+
+int n , pos ;
+double spd;
+
+int main()
+{
+  while( cin>>n and n not_eq 0 )
+    {
+
+    }
+  return 0;
+}

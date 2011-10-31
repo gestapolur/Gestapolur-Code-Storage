@@ -1,0 +1,33 @@
+#include<stdio.h>
+#define max(a,b) a>b?a:b
+typedef struct wu
+{
+	double V;
+	double TT;
+	int T;
+}wu;
+wu wupin[1005];
+double dp[10005];
+int main()
+{
+	int n,m,i,j,k,vz;
+	double MAX;
+	freopen("test.in","r",stdin);
+	freopen("test.out","w",stdout);
+	while(scanf("%d%d",&n,&m)!=EOF)
+	{
+		MAX=0;
+		m*=100;
+		for(i=0;i<n;i++)
+		{
+			scanf("%lf%lf",&wupin[i].V,&wupin[i].TT);
+			wupin[i].T=wupin[i].TT*100;
+		}
+		memset(dp,0,sizeof(dp));
+		for(i=0;i<n;i++)
+			for(vz=m;vz>=wupin[i].T;vz--)
+				dp[vz]=max(dp[vz],dp[vz-wupin[i].T]+wupin[i].V);
+		printf("%.2lf\n",dp[m]);
+	}
+	return 0;
+}

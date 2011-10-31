@@ -1,0 +1,36 @@
+//binary graph hungary test
+#include<iostream>
+#define MAXN 1001
+using namespace std;
+//left has n verx , right side has m verx , k is the number of edge 
+int n , m , k ; 
+int mat[ MAXN ][ MAXN ];
+int pre[ MAXN ];
+bool vis[ MAXN ];
+
+bool find( int x )
+{
+  for(int i = 1 ; i <= m ; ++ i )
+    if( mat[ x ][ i ] and ( not vis[ i ] or find( i ) ) )
+      {
+	vis[ i ] = true;
+	return true;
+      } 
+  return false ;
+}
+
+int main()
+{
+  int i , u , v ;
+  cin>>n>>m>>k;
+ 
+  for( i = 1 ; i <= k ; ++ i )
+    {
+      cin>>u>>v;
+      mat[ u ][ v ] = true;  
+    }
+  while( find( x ) )
+    ++cnt;
+  cout<<cnt<<"\n";
+  return 0;
+}

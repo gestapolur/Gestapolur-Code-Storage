@@ -1,0 +1,86 @@
+/*
+  USACO 2002 winter new year's party
+  2011.1.1 by Gestapolur
+*/
+#include<iostream>
+#define MAXN 215
+#define INF 2141483647
+using namespace std;
+
+int w[MAXN][MAXN],source,sink;
+int n,d,k;
+
+int flow;
+bool flag;
+int d[MAXN],di[MAXN],pre[MAXN];
+
+void dfs()
+{
+  int i,j,rec;
+
+  vh[ 0 ] = n;
+
+  for(i = 1 ;i <= n ; ++ i)
+    di[ i ] = 1;
+
+  i = 1;
+  aug = INF;
+
+  while(d[ source ] < n)
+    {
+      h[i] = aug;
+      flag = false;
+      for(j = di[i] ; j <= n ; ++ j)
+	if(w[i][j] > 0 and d[ j ] == d[ i ] + 1)
+	  {
+	    flag = true;
+	    di[i] = j;
+	    if(w[i][j] < aug)
+	      aug = w[i][j];
+	    pre[ j ] = i;
+	    i = j;
+	    if(i == sink)
+	      {
+		flow += aug;
+		while(i not_eq source)
+		  {
+		    tmp = i;
+		    i = pre[i];
+		    w[tmp][i]+=aug;
+		    w[i][tmp]-=aug;
+		  }
+		aug = INF;
+	      }
+	    break;
+	  }
+      if( flag )
+	continue;
+
+    }
+  return ;
+}
+
+int main()
+{
+  int i,j;
+  int u,v;
+  cin>>cow>>k>>d;
+  source = cow + d + 1;
+  sink = cow + d + 2;
+  for(i = 1;i <= d ; ++ i)
+    cin>>w[ source ][ i ];
+
+  for(i = 1 ;i <= cow ; ++ i)
+    {
+      cin>>u;
+      for(j = 1 ;j <= u ; ++ j)
+	{
+	  cin>>v;
+	  w[ v ][ d + u ] = 1;
+	}
+    }
+
+  for(i = 1 ;i <= cow ; ++ i)
+    w[ i ][ sink ] = k;
+  return 0;
+}

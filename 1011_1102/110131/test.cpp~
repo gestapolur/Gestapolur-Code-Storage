@@ -1,0 +1,10 @@
+#include<iostream>
+using namespace std;
+
+typedef bool [5][5] maze;
+
+int main()
+{
+  maze k;
+  return 0;
+}

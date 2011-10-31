@@ -1,0 +1,176 @@
+program treap_exercise;
+
+type
+   int	= longint;
+   node	= record 
+	     lc,rc,par,ran,num : int;
+	  end;
+const			   
+   MAXN	= 1000;
+	
+var
+   top , root , ins , val : int;
+   tree			  : array [0..MAXN] of node;
+   stack		  : array [0..MAXN] of 1..MAXN;
+
+procedure rr(x : int );{right roate}
+var
+   y : int;
+begin
+   y := tree[ x ].par;
+   
+   if y = root then root := x;
+   writeln('right : x ',x ,' ',y);
+   tree[ x ].par := tree[ y ].par;
+   tree[ tree[ x ].rc ].par := y;
+   tree[ y ].lc := tree[ x ].rc;
+   tree[ x ].rc := y;
+   if tree[ tree[ y ].par ].lc = y then
+      tree[ tree[ y ].par ].lc := x
+   else
+      tree[ tree[ y ].par ].rc := x;
+   tree[ y ].par := x;
+end; { rr }
+
+procedure lr(x : int );{left roate}
+var
+   y : int;
+begin
+   y := tree[ x ].par;
+   
+   if y = root then
+      root := x;
+   writeln('left : x ',x ,' y ',y,' root : ',root);
+   tree[ x ].par := tree[ y ].par;
+   writeln('middd root ',root);
+   tree[ tree[ x ].lc ].par := y;
+   tree[ y ].rc := tree[ x ].lc;
+   tree[ x ].lc := y;
+   writeln('mid root ',root);
+   if tree[ tree[ y ].par ].lc = y then
+      tree[ tree[ y ].par ].lc := x
+   else
+      tree[ tree[ y ].par ].rc := x;
+   tree[ y ].par := x;
+   writeln('proc after root ',root);
+end; { lr }
+
+procedure del(pos : int );
+begin
+   while (tree[ pos ].lc <> 0) or (tree[ pos ].rc <> 0) do
+      if tree[ tree[ pos ].lc ].ran < tree[ tree[ pos ].rc ].ran then
+	 rr(tree[ pos ].lc )
+      else
+	 lr(tree[ pos ].rc );
+   if tree[ tree[ pos ].par ].lc = pos then
+      tree[ tree[ pos ].par ].lc := 0 
+   else
+      tree[ tree[ pos ].par ].rc := 0;
+   tree[ pos ].ran := 0;
+   tree[ pos ].num := 0;
+end; { del }
+
+procedure add(v : int );
+var
+   pos,x,y : int;
+begin
+   
+   pos := stack[ top ];
+   top := top + 1;
+   
+   Randomize;
+   with tree[ pos ] do
+   begin
+      num := v;
+      ran := random( MAXN );
+      lc := 0 ; rc := 0 ; par := 0;
+   end;
+   
+   x := root; y := 0;
+   {writeln('position : ', pos );}
+   while x <> 0 do
+   begin
+      y := x;
+      if v < tree[ x ].num then
+	 x := tree[ x ].lc
+      else
+	 x := tree[ x ].rc;
+   end;
+   
+   if y <> 0 then
+   begin
+      tree[ pos ].par := y;
+      if v < tree[ y ].num then
+	 tree[ y ].lc := pos
+      else
+	 tree[ y ].rc := pos;
+   end
+   else
+      root := pos;
+   writeln('root ',root,' pos ',pos,' value ',v , ' pa ',y,' rank ',tree[ pos ].ran);
+   {roate}
+   while  ( tree[ pos ].par <> 0 )  and (tree[ tree[ pos ].par ].ran < tree[ pos ].ran) do
+   begin
+      if tree[ tree[ pos ].par ].lc = pos then
+	 rr( pos )
+      else
+	 lr( pos );
+   end;
+   writeln('root after : ',root);
+end; { add }
+
+function find(val : int ) : int;
+var
+   pos : int;
+begin
+   pos := root;
+   while (pos <> 0) and (tree[ pos ].num <> val) do
+      if tree[ pos ].num < val then
+	 pos := tree[ pos ].rc
+      else
+	 pos := tree[ pos ].lc;
+   find := pos;
+end; { find }
+
+procedure init();
+var
+   i : integer;
+begin
+   for i := 1 to MAXN do
+      stack[ i ] := i;
+   root := 0;
+   top := 1;
+end; { init }
+
+procedure disp(x : int );
+begin
+   if tree[ x ].lc <> 0 then disp( tree[ x ].lc);
+   with tree[ x ] do 
+      writeln(x , ' ' , num , ' ' , ran , ' ' , lc , ' ' , rc );
+   if tree[ x ].rc <> 0 then disp( tree[ x ].rc);
+end; { disp }
+
+begin
+   init();
+   repeat
+      read( ins );
+      case ins of
+	1 : 
+	    begin
+	       read(val);
+	       add(val);
+	    end;
+	2 : 
+	    begin
+	       read(val);
+	       val := find(val);
+	       if val <> 0 then
+		  del(val);
+	    end;
+      else ins := 0 ;
+      end; { case }
+      writeln('root ' , root );
+      disp( root );
+      readln;
+   until ins = 0;
+end.

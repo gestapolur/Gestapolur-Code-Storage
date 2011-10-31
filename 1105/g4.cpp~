@@ -1,0 +1,12 @@
+#include<iostream>
+
+int main()
+{
+  int t,tt;
+  while( t <= tt)
+    {
+      cout<<"Case "<<t<<":\n";
+      ++ t;
+    }
+  return 0;
+}

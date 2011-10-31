@@ -1,0 +1,18 @@
+program csu_monthyJun_C;
+
+var
+   x : longint;
+   k : boolean;
+
+begin
+   while not eof do
+   begin
+      readln( x );
+      k := 1 ;
+      while x and 1 = k
+      begin
+	 dec( x , x shr 1 );
+	 k := k xor 1 ;
+      end;
+   end;
+end;

@@ -1,0 +1,2 @@
+all:
+	g++ -g -Wall sns0.cpp -o ugc_stat

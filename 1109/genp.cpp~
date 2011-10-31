@@ -1,0 +1,22 @@
+#include<iostream>
+#define MAXN 22002
+using namespace std;
+
+int p[ MAXN ];
+bool a[ 50000000 ];
+
+int main()
+{
+  int i , k = 2 ;
+  int cnt = 0 ;
+  while( cnt <= 22000 )
+    {
+      while( a[ k ] ) ++ k ;
+      i = k ; j = 2; 
+      p[ ++ cnt ] = k ;
+      do{
+        i = k * j ;
+        a[ i ] = false;
+        ++ j ;
+      }while( i < 50000000 );
+}

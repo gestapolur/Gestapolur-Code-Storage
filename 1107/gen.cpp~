@@ -1,0 +1,30 @@
+#include<iostream>
+#include<cstdlib>
+#include<cstdio>
+#define MAXN 10000
+using namespace std;
+
+//ofstream cout("stp.in");
+
+int n,m;
+bool w[ MAXN ][ MAXN ];
+
+int main()
+{
+  /*
+  int i,u,v,val;
+  srand( time( 0 ) );
+  n = rand() % MAXN + 1 ;
+  m = rand() % ( n * n - n ) + n;
+
+  for(i = 1 ; i <= m ; ++ i )
+    do{
+      u = rand();
+    }while(w[ u ][ v ]);
+  */
+  srand( 10 );
+  for(int i = 1 ; i <= 100 ; ++ i )
+    cout<<rand( i )<<" ";
+  cout<<"\n";
+  return 0;
+}

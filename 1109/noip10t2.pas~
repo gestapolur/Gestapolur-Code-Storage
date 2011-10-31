@@ -1,0 +1,43 @@
+program noip2010t2;
+const 
+   MAXN = 350;
+   MAXM = 40;
+var
+   f     : array[0..MAXN,0..MAXM,0..MAXM,0..MAXM,0..MAXM] of longint;
+   cnt   : array[ 1..4 ] of integer;
+   w     : array[ 1..MAXN ] of integer;
+   n , m : integer;
+         
+procedure dp();
+begin
+   
+end; { dp }
+
+procedure init();
+var
+   i , tmp : integer;
+begin
+   readln( n , m );
+   for i := 1 to n do
+      read( w[ i ] );
+   readln;
+   
+   for i := 1 to n do
+   begin
+      read( tmp );
+      inc( cnt[ tmp ] );
+   end;
+   readln;
+   
+   f[ i , cnt[ 1 ] , cnt[ 2 ] , cnt[ 3 ] , cnt[ 4 ] ] := w[ 1 ];
+
+end; { init }
+
+
+begin
+   
+   init();
+
+   dp();
+
+end;

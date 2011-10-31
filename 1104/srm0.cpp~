@@ -1,0 +1,44 @@
+//DIV2 250
+
+#include<iostream>
+#define MAXN 501
+using namespace std;
+
+bool hash[ MAXN ];
+bool exi[ MAXN ];
+
+class SRMCards
+{
+public:
+  int maxTurns(vector <int> cards)
+  {
+    int i,n,a,csd,num,ans = 0 ;
+    n = cards.size();
+    for( i = 0 ; i < n ; ++ i)
+      ex[ card[ i ] ] = true;
+ 
+    while( 1 )
+      {
+	csd = -1 ;
+	for(i = 0 ; i < n ; ++ i)
+	  if( not hash[ cards[ i ] ] and 
+	      not ( ex[ card[ i ] - 1] or ex[ card[ i ]] + 1) )
+	    {csd = i ; break;}
+	  else if(not hash[ card[ i ] ] and 
+		  ex[ card[ i ] - 1 ] + ex[ card[ i ] + 1 ] < 1 )
+	    {csd = i ; break;}
+	  else if(not hash[ card[ i ] ] )
+	    {csd = i ; break;}
+	if(csd == -1 ) return ans;
+	hash[ card[ csd ] ] = true;
+	hash[ card[ csd ] + 1 ] = true;
+	hash[ card[ csd ] - 1 ] = true;
+      }
+  }  
+};
+
+int main()
+{
+  
+  return 0;
+}

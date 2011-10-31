@@ -1,0 +1,33 @@
+//Newton's Method
+#include<iostream>
+#include<cmath>
+#define MAXN 1001
+using namespace std;
+
+int a[MAXN];
+int ap[MAXN];
+int n;//the highest times of equation
+
+double function(double x)
+{
+  int i;
+  double res = 0.0000000;
+  for(i = 1 ; i <= n ; ++ i)
+    res = res + a[i]*pow(x,i);
+  return res;
+}
+
+int main()
+{
+  int i;
+  cin>>n;
+  //input like a0*x^0 + a1*x^1 + ... an*x^n = 0
+  for(i = 1 ;i <= n ; ++ i)
+    {
+      cin>>a[i];
+      ap[i] = a[i]*(i - 1);
+    }
+
+  
+  return 0;
+}

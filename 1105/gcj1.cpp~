@@ -1,0 +1,55 @@
+#include<iostream>
+#include<string>
+#define MAXN 100
+using namespace std;
+
+int c,d,n,t;
+bool opp[ MAXN ][ MAXN ];
+int com[ MAXN ][ MAXN ];
+int sto[ MAXN ];
+int stc[ MAXN ];
+
+int main()
+{
+  string tmp;
+  int tt,i,j;
+  cin>>t;
+  while(t > 0)
+    {
+      cin>>c;
+      for(i = 1 ; i <= c ; ++ i)
+	{
+	  cin>>tmp;
+	  com[ tmp [ 0 ]][ 0 ] = com[ tmp[ 1 ]][ 0 ] = 1;
+	  com[ tmp[ 0 ] ][ tmp[ 1 ] ] = tmp[ 2 ] - 48;
+	  com[ tmp[ 1 ] ][ tmp[ 0 ] ] = tmp[ 2 ] - 48;
+	}
+      cin>>d;
+      for(i = 1 ; i <= c ; ++ i)
+	{
+	  cin>>tmp;
+	  opp[tmp[ 0 ]][ 0 ] = opp[tmp[ 1 ]][ 0 ] = true;
+	  opp[ tmp[ 0 ] ][ tmp[ 1 ] ] = true;
+	  opp[ tmp[ 1 ] ][ tmp[ 0 ] ] = true;
+	}
+      cin>>n;
+      cin>>tmp;
+      stc[ 0 ] = 0 ; stp[ 0 ] = 0 ;
+      for(i = 0 ; i < n ; ++ i)
+	{
+	  if(cob(tmp[ i ]))
+	    {}
+	  else if(op(tmp[ i ]))
+	    {}
+	  else
+	    {
+	      if(com[ tmp[ i ]][ 0 ])
+		stc[ ++stc[ 0 ] ] = i;
+	      if(opp[ tmp[ i ]][ 0 ])
+		stp[ ++stp[ 0 ] ] = i;
+	    }
+	}
+      clr();
+    }
+  return 0;
+}

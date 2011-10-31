@@ -1,0 +1,29 @@
+/* binary graph exercise */
+#include<iostream>
+#define MAXN 1002
+using namespace std;
+
+int n , m , k;
+bool mat[ MAXN ][ MAXN ] , lnk[ MAXN ];
+int lnk[ MAXN ];
+
+bool find( int x )
+{
+  for( int i = 1 ; i <= n ; ++ i )
+    if( mat[ x ][ i ] )
+      {
+	if( vis[ i ] )
+	  continue;
+	vis[ i ] = true;
+	if( lnk[ i ] == -1 or find( i ) )
+	  lnk[ i ] = x;
+      }
+  return false;
+}
+
+int main()
+{
+  int i ;
+  cin>>m>>n>>k;
+  return 0;
+}

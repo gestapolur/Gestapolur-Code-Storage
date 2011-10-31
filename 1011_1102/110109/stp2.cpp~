@@ -1,0 +1,56 @@
+//SPFA
+#include<fstream>
+#define MAXN 1002
+#define INF 2141483647
+using namespace std;
+
+ifstream cin("data.in");
+ofstream cout("out2.out");
+
+int n,m;//verx,edge
+int rear,front;
+int w[MAXN][MAXN],que[MAXN * 100],mark[MAXN]; // record the number of verx in queue ;
+bool in[MAXN];
+//array w is adj matrix
+
+void SPFA(int s)
+{
+  int i;
+  for(i=1;i<=n;i++) mark[i] = INF;
+  front = 0,rear = 1;
+  que[rear] = s,in[s] = true,mark[s] = 0;
+
+  do{
+    ++front;
+    for(i=1;i<=n;i++)
+      if(not in[i] and w[que[front]][i] > 0 and mark[i] > mark[que[front]] + w[que[front]][i])
+	{
+	  cout<<i<<" "<<mark[ i ]<<" "<<mark[que[front]]<<" "<<w[que[front]][i]<<"\n";
+	  mark[i] = mark[que[front]] + w[que[front]][i];
+	  que[++rear] = i;
+	  in[i] = true;
+	}
+    in[front] = false;
+  }while(front<=rear);
+
+  for(i=1;i<=n;i++)
+    cout<<mark[i]<<" ";
+  cout<<"\n";
+  return ;
+}
+
+int main()
+{
+  int i,u,v,wi;
+  cin>>n>>m;
+  for(i = 1 ; i <= m ; ++ i)
+    {
+      cin>>u>>v>>wi;
+      w[u][v] = w[u][v] < wi ? w[u][v] : wi ;
+    }
+  
+  SPFA(1);
+  cout.close();
+  cin.close();
+  return 0;
+}

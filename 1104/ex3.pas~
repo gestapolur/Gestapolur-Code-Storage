@@ -1,0 +1,17 @@
+{i/o}
+program ex3
+
+var
+   fin : text;
+   x	    : longint;
+begin
+   assign(fout,'input.txt');
+   Randomize;
+   x := random(MaxLongInt);
+   write(fout,x,' ');
+   write(x,' ');
+   x := random(MaxLongInt);
+   writeln(fout,x);
+   writeln(x);
+   close( fout );
+end.

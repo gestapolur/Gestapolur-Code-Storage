@@ -1,0 +1,51 @@
+//HNU 2011 test
+#include<iostream>
+#define MAXN 100002
+using namespace std;
+
+class node
+{
+public:
+  int x;
+  node *next;
+};
+
+node *head[ MAXN ] = { NULL };
+
+int n,m;
+
+void add(int d ,int v)
+{
+  int x;
+  if( head[ d ] == NULL)
+    {
+      head[ d ] = new node;
+      head[ d ]->next = NULL;
+      head[ d ]->x = v;
+    }
+  else
+    {
+      node *p,*pre;
+      p = head[ d ];
+      while(p not_eq NULL or  p->x > v )
+	{
+	  pre = p;
+	  p = p->next;
+	}
+      if( p == head )
+    }
+  return ;
+}
+
+int main()
+{
+  int i,v,d;
+  cin>>n>>m;
+  for( i = 1 ; i <= n ; ++ i)
+    {
+      cin>>d>>v;
+      add( d , v );
+      
+    }
+  return 0;
+}

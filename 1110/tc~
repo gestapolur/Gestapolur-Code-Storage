@@ -1,0 +1,6 @@
+-*- mode: compilation; default-directory: "~/code/1110/" -*-
+Compilation started at Tue Oct  4 13:52:22
+
+g++ -g hung.cpp -o h
+
+Compilation finished at Tue Oct  4 13:52:23

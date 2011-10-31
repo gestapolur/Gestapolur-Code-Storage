@@ -1,0 +1,6 @@
+g++ -g ./key.cpp  -o ./key
+./key
+./test
+./test2
+
+diff 

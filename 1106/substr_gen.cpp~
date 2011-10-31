@@ -1,0 +1,17 @@
+#include<fstream>
+ofstream cout("substr.in");
+using namespace std;
+
+int main()
+{
+  char t = 33;
+  cout<<"1\n";
+  for(int i = 1 ; i <= 1000 ; ++ i)
+    {
+      cout<<t;
+      ++t;
+      if( t > 127 ) t = 33;
+    }
+  cout<<"\n";
+  return 0;
+}

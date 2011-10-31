@@ -1,0 +1,33 @@
+#include<iostream>
+#define MAXN 105
+using namespace std;
+
+//ifstream cin(".in");
+//ofstream cout("ans.out");
+
+int n,low,hi;
+int a[ MAXN ];
+
+int main()
+{
+  int t,tt,i;
+  cin>>tt;
+  t = 1 ;
+  while(t <= tt )
+    {
+      cin>>n>>low>>hi;
+      for( i = 1 ;i <= n ; ++ i)
+	cin>>a[ i ];
+      for( i = low ; i <= hi ; ++ i)
+	{
+	  for( j = 1 ; j <= n ; ++ j )
+	    if( i % a[ j ] not_eq 0)
+	      break;
+	  if ( j == n + 1 ){cout<<i<<"\n";sign = true;break;}
+	}
+      if( not sign )
+	cout<<"NO\n";
+      ++t;
+    }
+  return 0;
+}

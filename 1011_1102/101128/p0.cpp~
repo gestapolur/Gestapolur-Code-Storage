@@ -1,0 +1,41 @@
+/*TCO 10 */
+#include<iostream>
+#include<string>
+using namespace std;
+
+Class GirlsAndBoys
+{
+ public:
+  int sortThem(string row)
+  {
+    int swp = 0,ans;
+    int i,n,nb,ng;
+    string resa;
+
+    n = row.size();
+    for(i = 0 ;i < n ;++ i)
+      if(row[i] == 'G') ++ ng;
+      else ++ nb;
+    
+    swp = 0;
+    for(i = 0 ; i < nb ; ++ i)
+      if(row[i] == 'G')
+	swp++;
+    ans = swp;swp = 0;
+    for(i = 0 ; i < ng ; ++ i)
+      if(row[i] == 'B')
+	swp++;
+    if(ans > swp) ans = swp;
+    return ans;
+  }
+}
+
+GirlsAndBoys test;
+
+int main()
+{
+  string a;
+  cin>>a;
+  cout<<test.sortThem(a)<<"\n";
+  return 0;
+}

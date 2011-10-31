@@ -1,0 +1,135 @@
+#include <iostream>
+#include <cstdio>
+#include <cstring>
+#include <cstdlib>
+#include <algorithm>
+#include <list>
+#include <stack>
+ 
+using namespace std;
+ 
+const int kMaxN = 3001;
+ 
+class Graph {
+ public:
+  Graph(int vertex_count = 0) {
+    vertex_count_ = vertex_count;
+    memset(degree_, 0, sizeof(degree_));
+  }
+  void insert_edge(int v, int w) {
+    graph_[v].push_back(w);
+    degree_[w]++;
+  }
+  void TarjanInit() {
+    tarjan_count = 0;
+    memset(tarjan_dfn, 0, sizeof(tarjan_dfn));
+    memset(tarjan_low, 0, sizeof(tarjan_low));
+    memset(tarjan_instack, false, sizeof(tarjan_instack));
+    for (int i = 1; i <= vertex_count_; i++) {
+      tarjan_set[i] = i;
+    }
+  }
+  void Tarjan(int v) {                  // Need TarjanInit()
+    tarjan_count++;
+    tarjan_dfn[v] = tarjan_count;
+    tarjan_low[v] = tarjan_count;
+    tarjan_stack.push(v);
+    tarjan_instack[v] = true;
+ 
+    for (list<int>::const_iterator i = graph_[v].begin(); i != graph_[v].end(); ++i) {
+      if (!tarjan_dfn[*i]) {
+        Tarjan(*i);
+        tarjan_low[v] = min(tarjan_low[v], tarjan_low[*i]);
+      } else if (tarjan_instack[*i]) {
+        tarjan_low[v] = min(tarjan_low[v], tarjan_dfn[*i]);
+      }
+    }
+ 
+    if (tarjan_dfn[v] == tarjan_low[v]) {
+      while (tarjan_stack.top() != v) {
+        tarjan_instack[tarjan_stack.top()] = false;
+        tarjan_set[tarjan_stack.top()] = v;
+        tarjan_stack.pop();
+      }
+      tarjan_instack[tarjan_stack.top()] = false;
+      tarjan_set[tarjan_stack.top()] = v;
+      tarjan_stack.pop();
+    }
+  }
+  static bool compare(const int &a, const int &b) {
+    return a < b;
+  }
+  void unique() {
+    for (int v = 0; v < vertex_count_; v++) {
+      graph_[v].sort(compare);
+      graph_[v].unique();
+    }
+  }
+  void BuildDAG(Graph &new_graph) {
+    for (int v = 1; v <= vertex_count_; v++) {
+      for (list<int>::const_iterator i = graph_[v].begin(); i != graph_[v].end(); ++i) {
+        if (tarjan_set[v] == tarjan_set[*i]) {
+          continue;
+        } else {
+          new_graph.insert_edge(tarjan_set[v], tarjan_set[*i]);
+        }
+      }
+    }
+    new_graph.unique();
+  }
+  int view_degree(int v) {
+    return degree_[v];
+  }
+ 
+  void show(int v) {
+    cout << "Vertex " << v << " : ";
+    for (list<int>::const_iterator i = graph_[v].begin(); i != graph_[v].end(); ++i) {
+      cout << *i << " ";
+    }
+    cout << endl;
+  }
+  void show_all() {
+    for (int i = 1; i <= vertex_count_; i++) {
+      show(i);
+    }
+  }
+ 
+  int tarjan_count;
+  int tarjan_set[kMaxN];
+  int tarjan_dfn[kMaxN];
+  int tarjan_low[kMaxN];
+  bool tarjan_instack[kMaxN];
+  stack<int> tarjan_stack;
+ private:
+  int vertex_count_;
+  int degree_[kMaxN];
+  list<int> graph_[kMaxN];
+};
+ 
+int n, p, r;
+int buy[kMaxN];
+ 
+int main() {
+  ios::sync_with_stdio(false);
+  cin >> n;
+  Graph graph(n);
+  Graph graph_dag(n);
+  cin >> r;
+  for (int i = 1; i <= r; i++) {
+    int x, y;
+    cin >> x >> y;
+    graph.insert_edge(x, y);
+  }
+ 
+  graph.TarjanInit();
+  for (int i = 1; i <= n; i++) {
+    if (!graph.tarjan_dfn[i]) {
+      graph.Tarjan(i);
+    }
+  }
+  graph.BuildDAG(graph_dag);
+ 
+  graph_dag.show_all();
+ 
+  return 0;
+}

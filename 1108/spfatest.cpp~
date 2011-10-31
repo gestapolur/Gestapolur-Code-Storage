@@ -1,0 +1,64 @@
+//check how SPFA check a neg circle 
+#include<iostream>
+#define MAXN 1000
+#define INF 1000000000
+using namespace std;
+
+int n , m ;
+int q[ MAXN * 2 ] , w[ MAXN ][ MAXN ] ;
+int mark[ MAXN ] , pre[ MAXN ];
+bool in[ MAXN ];
+
+void spfa()
+{
+  int i ;
+  int front , rear , p ;
+  for( i = 1 ; i <= n ; ++ i )
+    mark[ i ] = INF;
+  front = 0 , rear = 1 ;
+  mark[ 1 ] = 0 ;pre[ 1 ] = 0 ;
+
+  do{
+    p = q[ ++ front ];
+    for( i = 1 ;i  <= n ; ++ i )
+      if(w[ p ][ i ] not_eq INF and mark[ i ] > mark[ p ] + w[ p ][ i ])
+	{
+	  mark[ i ] = mark[ p ] + w[ p ][ i ];
+	  pre[ i ] = p ;
+	  if( not in[ i ] )
+	    { q[ ++ rear ] = p ; in[ i ] = true;}
+	}
+  }while( front <= rear );
+
+  for( i = 1 ; i <= n ; ++ i )
+    {
+      p = i;
+      while( p not_eq 0 )
+	{
+	  cout<<p<<" ";
+	  p = pre[ p ];
+	}
+      cout<<"\n";
+    }
+
+  return ;
+}
+
+int main()
+{
+  int i , u , v , wi;
+  cin>>n>>m;
+  for( u = 1 ; u <= n ; ++ u )
+    for( v = 1 ; v <= n ;  ++ v )
+      w[ u ][ v ] = INF;
+
+  for( i = 1 ; i <= m; ++ i )
+    {
+      cin>>u>>v>>wi;
+      w[ u ][ v ] = wi;
+    }
+
+  spfa();
+   
+  return 0;
+}

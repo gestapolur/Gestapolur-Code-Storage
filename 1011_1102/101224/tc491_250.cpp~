@@ -1,0 +1,25 @@
+#include<iostream>
+using namespace std;
+
+class OneDigitDifference
+{
+public:
+  int getSmallest(int N)
+  {
+    string a;
+    int s;
+    a = N;
+    s = a.size();
+    for(int )
+  }
+};
+
+OnedigitDifference test;
+
+int main()
+{
+  int n;
+  cin>>n;
+  cout<<test.getSmallest(n)<<"\n";
+  return 0;
+}

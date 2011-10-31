@@ -1,0 +1,15 @@
+./gen
+./dijkstra #ou2
+./floyd #out2
+diff out1.out out2.out
+
+while ["`diff out1.out out2.out `" == ""]
+do
+    ./bellmanford #out3
+    ./spfa # out4 
+    diff out3.out out4.out
+    diff out1.out out3.out
+    ./gen
+    ./dijkstra
+    ./floyd
+done

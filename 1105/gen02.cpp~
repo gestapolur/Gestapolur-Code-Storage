@@ -1,0 +1,12 @@
+//steins;gate test generator
+#include<fstream>
+#define MAXN 1000
+#define MAXM 100
+
+//ofstream cout("g2.in");
+
+int main()
+{
+
+  return 0;
+}

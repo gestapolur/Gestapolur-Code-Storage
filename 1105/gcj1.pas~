@@ -1,0 +1,52 @@
+program gcj2010_r1a_b;
+var
+   ins,di,m,n,t,tt,ans : integer;
+   i,t1,t2	       : integer;
+   a		       : array [1..100] of integer;
+
+function ones(k	: integer ): integer ;
+begin
+   if k = 0 then ones := 0
+   else ones := 1;
+end;
+
+function abs(a : integer ): integer ;
+begin
+   if a > 0 then abs := a;
+   abs := -a;
+end;
+
+begin
+   readln( tt );
+   t := 1 ;
+   while t <= tt do
+   begin
+      { init }
+      readln( di , ins , m , n );
+      for i := 1 to n do
+	 read( a[ i ] );
+      readln;
+      ans := 0 ;
+      { work }
+      if n = 2 then
+      begin
+	 ans := abs( a[ 2 ] - a[ 1 ] ) div m + ones( abs( a[ 2 ] - a[ 1 ] ) mod m );
+	 ans := ans * ins;
+      end
+      else if n > 2 then
+      begin
+	 t1 := abs( a[ i + 1 ] - a[ i - 1 ] ) div m +ones(abs( a[ i + 1 ] - a[ i - 1 ] ) div m );
+	 t1 := t1 * ins  + di ; 
+	 t2 := abs(a[ i ] - a[ i - 1 ]) div m + ones(abs( a[ i ] - a[ i - 1 ]) div m);
+	 t2 := t2 + abs( a[ i + 1 ] - a[ i ] ) div m + ones(abs(a[ i + 1] - a[ i ]) div m );
+	 t2 := t2 * ins;
+	 if t1 < t2 then
+	    ans := ans + t1
+	 else
+	    ans := ans + t2;	 
+      end;
+      
+      writeln('Case #',t,':',ans);
+      t := t + 1 ;
+   end;
+end.

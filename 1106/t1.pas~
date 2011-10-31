@@ -1,0 +1,11 @@
+program input_test;
+var
+   a : array[ 1..10 ] of string[ 10 ];
+   i : integer;
+begin
+   i := 1 ; 
+   repeat
+      readln( a[ i ] );
+      inc( i );
+   until integer(a[ 0 ]) = 10;
+end;

@@ -1,0 +1,37 @@
+#include<iostream>
+#define MAXN 3005
+using namespace std;
+
+class treenode
+{
+public:
+  int sum;
+  int l,r;
+};
+
+int n;
+
+treenode *node[MAXN] = NULL;
+
+void create(int l,int r,int s)
+{
+  if(l not_eq r)
+    {
+      int mid = l + r >> 1;
+      create(l,mid,s<<1);
+      create(mid + 1 , r , (s<<1) + 1);
+    }
+  return ;
+}
+
+void sum()
+{
+
+  return ;
+}
+
+int main()
+{
+  
+  return 0;
+}

@@ -1,0 +1,34 @@
+/*
+  graham scan
+  write by gestapolur
+  2011-10-01
+*/
+#include<iostream>
+#include<cmath>
+#define MAXN 1002
+using namespace std;
+
+int n;
+
+class point
+{
+public:
+  double x , y ;
+};
+
+point p[ MAXN ];
+
+void init()
+{
+  cin>>n;
+  for( int i = 1 ; i <= n ; ++ i )
+    cin>>p[ i ].x>>p[ i ].y;
+  return ; 
+}
+
+int main()
+{
+  init();
+  scanf();
+  return 0;
+}

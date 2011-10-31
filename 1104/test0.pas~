@@ -1,0 +1,7 @@
+program test
+var
+   a : array [1..100] of integer;
+
+begin
+   a := [1..100];
+end.

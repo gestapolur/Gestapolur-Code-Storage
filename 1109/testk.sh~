@@ -1,0 +1,3 @@
+./k < k.in > k1.out
+./k2 < k.in > k2.out
+diff k1.out k2.out

@@ -1,0 +1,41 @@
+//SERPC 09 G
+#include<iostream>
+#include<string>
+#define MAXN 1001
+using namespace std;
+
+string a,b;
+int n,m,len;
+
+void seek( int st )
+{
+  int pa,pb,clen = 0 ;
+  pa = 0 , pb = st;
+  while( pb < m and pa < n )
+    {
+      if( a[ pa ] == b[ pb ])
+	++pa,++pb,++clen;
+      else if( b[ pb ] == '*')
+	++pb,++clen;
+      else if( b[ pb ] == '?')
+	while( b[ ++pb ] not_eq a[ pa ] and pb < n ) ++clen;
+      else return ;
+    }
+  if(pa == m - 1 and a[ m - 1 ] == b[ pa ] and clen < len ) len = clen;
+  return ;
+}
+
+int main()
+{
+  int i;
+  while( cin>>a>>b )
+    {
+      m = a.size();
+      n = b.size();
+      len = MAXN ;
+      for( i = 0 ; i <= n - m  ; ++ i )
+	seek( i );
+      cout<<len<<"\n";
+    }
+  return 0;
+}

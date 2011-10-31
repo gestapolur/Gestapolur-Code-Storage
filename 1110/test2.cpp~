@@ -1,0 +1,10 @@
+#include<iostream>
+using namespace std;
+
+int *w[ 100 ][ 100 ];
+
+int main()
+{
+  w[ 1 ][ 2 ] = new int;
+  return 0;
+}

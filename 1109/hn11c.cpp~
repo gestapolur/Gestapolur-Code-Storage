@@ -1,0 +1,86 @@
+//2011 hunan collegiate contest C
+#include<iostream>
+#define MAXN 12
+using namespace std;
+
+int n , m , mx , my ;
+bool sw[ MAXN ][ MAXN ] , w[ MAXN ][ MAXN ];
+bool cl[ MAXN ][ MAXN ];
+
+bool check()
+{
+  int i , j , fx , fy ;
+  for( i = 1 ; i <= n ; ++ i )
+    for( j = 1 ; j <= n ; ++ j )
+      if( not cl[ i ][ j ] and w[ i ][ j ] )
+        {fx = i , fy = j ;goto stop ;}
+ stop:
+  if( fx + m <= n and fy + m <= n )
+    {
+      for( i = 1 ; i <= m ; ++ i )
+        for( j = 1 ; j <= m ; ++ j )
+          if( sw[ i ][ j ] == true and w[ i + fx - 1 ][ j + fy - 1 ] not_eq sw[ i ][ j ])
+            return false;
+      if( i == m + 1 and j == m + 1 )
+        return true;
+    }
+  return false;
+}
+
+bool divide()
+{
+  int i , j , u , v ;
+  for( i = 1 ; i <= n ; ++ i )
+    for( j = 1 ; j <= n ; ++ j )
+      if( i + m <= n and j + m <= n and w[ i ][ j ])
+        {
+          for( u = 1 ; u <= m ; ++ u )
+            for( v = 1 ; v <= m ; ++ v )
+              if( sw[ u ][ v ] == true and w[ i + u - 1 ][ j + v - 1 ] not_eq sw[ u ][ v ] )
+                goto end;
+        end:;
+          if( u == m + 1 and v == m + 1 and check() )
+            return true;
+          //clear
+          for( u = 1 ; u <= m ; ++ u )
+            for( v = 1 ; v <= m ; ++ v )
+              cl[ u ][ v ] = false;
+        }
+  return false;
+}
+
+bool init()
+{
+  int i , j ;
+  char ch;
+  cin>>n>>m;
+  if( n == 0 and m == 0 ) return false;
+  for( i = 1 ; i <= n; ++ i )
+    for( j = 1 ; j <= n ; ++ j )
+      {
+        cin>>ch;
+        if( ch == '*' ) w[ i ][ j ] = true;
+        else w[ i ][ j ] = false;
+      }
+  mx = 0 , my = 0 ;
+  for( i = 1 ; i <= m; ++ i )
+    for( j = 1 ; j <= m ; ++ j )
+      {
+        cin>>ch;
+        if( ch == '*' ) 
+          {
+            sw[ i ][ j ] = true;
+            if( mx == 0 ){ mx = i , my = j ; }
+          }
+        else sw[ i ][ j ] = false;
+      }
+  return true;
+}
+
+int main()
+{
+  while( init() )
+    if ( divide() ) cout<<"1\n";
+    else cout<<"0\n";
+  return 0;
+}

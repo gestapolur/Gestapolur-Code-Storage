@@ -1,0 +1,10 @@
+#include<iostream>
+using namespace std;
+
+string ch;
+
+int main()
+{
+  gets();
+  return 0;
+}

@@ -1,0 +1,66 @@
+//hungary alogorithm test
+#include<iostream>
+#include<cstring>
+#define MAXN 304
+using namespace std;
+
+int n , m , cnt ;
+int w[ MAXN ][ MAXN ];
+int lnk[ MAXN ];
+bool vis[ MAXN ];
+
+bool init()
+{
+  //both n verx on left side and right
+  //give a link adj 
+  if( cin>>n )
+    {
+      int i , j ;
+      memset( w , 0 , sizeof( w ) );
+      for( i = 1 ; i <= n ; ++ i )
+        for( j = 1 ; j <= n; ++ j )
+          cin>>w[ i ][ j ]; 
+      return true;
+    }
+  return false;
+}
+
+bool find( int x )
+{
+  for( int i = 1 ; i <= n ; ++ i )
+    if( w[ x ][ i ] > 0 )
+        {
+          if( vis[ i ] ) continue ;
+          vis[ i ] = true;
+          if( lnk[ i ] == -1 or find( lnk[ i ] ))
+            {
+              lnk[ i ] = x ;
+              return true ;
+            }
+        }
+  return false ;
+}
+
+void hungary()
+{
+  int i , j; 
+  for( i = 1 ; i <= n ; ++ i )
+    lnk[ i ] = -1 ;
+  cnt = 2 * n ;
+  for( i = 1 ; i <= n ; ++ i )
+    {
+      for( j = 1 ; j <= n ; ++ j )
+        vis[ j ] = false;
+      if( find( i ) ) -- cnt ;
+    } 
+  cout<<cnt<<"\n";
+  for( i = 1 ; i <= n ; ++ i) cout << lnk[ i ] <<" "; cout<<"\n"; cout<<"\n";
+  return ;
+}
+
+int main()
+{
+  while( init() )
+      hungary();
+  return 0 ;
+}

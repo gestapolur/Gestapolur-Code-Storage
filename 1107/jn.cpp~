@@ -1,0 +1,42 @@
+#include<iostream>
+#include<cstring>
+#define MAXS (1 << 19) + 1
+using namespace std;
+
+int tr[ MAXS ][ 128 ];
+char s[ 1002 ];
+int n , p , t ;
+
+void dfs( int x , int ad)
+{
+  char c;
+  int r;
+  for( int i = x ; i <= n ; ++ i )
+    {
+      c = s[ i ] ; r = tr[ ad ][ c - 48 ];
+      if( r <= ( t << 19 ) )
+	{
+	  ++p;
+	  tr[ ad ][ c - 48 ] = p | ( t << 19 );
+	  ad = p;
+	}
+      else
+	ad = r & (1 << 19) - 1 ;
+    }
+  return ;
+}
+
+int main()
+{
+  cin>>t;
+  while( t -- )
+    {
+      cin>>s+1;
+      p = 1 ;
+      n = strlen( s + 1 );
+      for(int i = 1 ; i <= n ; ++ i )
+	dfs( i , 1 );
+      cout<<p-1<<"\n";
+    }
+  return 0;
+}

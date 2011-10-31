@@ -1,0 +1,54 @@
+//timus 1164
+#include<iostream>
+#include<cstdlib>
+#include<cstdio>
+#include<cstring>
+#define MAXN 12
+#define MAXW 102
+using namespace std;
+
+int n , m , p;
+int len[ MAXW ];
+char w[ MAXN ][ MAXN ] , wd[ MAXW ][ MAXW ];
+bool met[ MAXN ][ MAXN ];
+
+const int dir[ 4 ][ 2 ] = { 1 , 0 , -1 , 0 , 0 , 1 , 0 , -1 };
+
+void fill( int r , int c , int x , int idx )
+{
+  int tr , tc ;
+  met[ tr ][ tc ] = 0 ;
+  for( int i = 0 ; i < 4 ; ++ i )
+    {
+      tr = r + dir[ i ][ 0 ] , tc = c + dir[ i ][ 1 ];
+      if(tr <= n and tr > 0 and tc <= m and tc > 0 and
+         not met[ tr ][ tc ] and w[ tr ][ tc ] == wd[ x ][ idx ] )
+        fill( tr , tc , x , idx + 1 );
+    }
+  return ;
+}
+
+void init()
+{
+  int i , j ;
+  cin>>n>>m>>p;
+  for( i = 1 ; i <= n ; ++ i )
+    for( j = 1 ; j <= n ; ++ j )
+      cin>>w[ i ][ j ];
+  for( i = 1 ; i <= n ; ++ i )
+  return ;
+}
+
+int main()
+{
+  init();
+  
+  for( int i = 1 ; i <= n ; ++ i )
+    for( int j = 1 ; j <= n ; ++ j )
+      if(w[ i ][ j ])
+        dfs();
+
+  word();
+
+  return 0;
+}

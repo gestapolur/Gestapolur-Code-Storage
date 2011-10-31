@@ -1,0 +1,18 @@
+#include<iostream>
+using namespace std;
+
+int n;
+
+bool init()
+{
+  if()
+}
+
+int main()
+{
+  while( init() )
+    {
+
+    }
+  return 0 ;
+}

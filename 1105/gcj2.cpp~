@@ -1,0 +1,75 @@
+#include<iostream>
+#define MAXL 21
+#define MAXN 1005
+using namespace std;
+
+bool c[ MAXN ][ MAXL ];
+int len[ MAXN ] , tl[ MAXL ];
+int s[ MAXL ];
+
+void change(int x , int p)
+{
+  int k;
+  k = 1 ;
+  while(x > 0)
+    {
+      c[ p ][ k ] = x & 1;
+      tl[ k ] += x & 1;
+      x = x >> 1;
+      ++k;
+    }
+  
+  len[ p ] = k - 1; 
+  /*
+  for(int i = 1 ; i <= len[ p ] ; ++ i)
+    cout<<c[ p ][ i ];cout<<"\n";
+  */
+  return ;
+}
+
+void clr()
+{
+  
+  return ;
+}
+
+
+int main()
+{
+  int i,t,tt;
+  cin>>t;
+  tt = t;
+  while( t > 0 )
+    {
+      cin>>n;
+      ans = 0 ;maxs = 0 ;
+      clr();
+      for(i = 1 ; i <= n ; ++ i)
+	{
+	  cin>>w[ i ];
+	  maxs += w[ i ];
+	  change(w[ i ] , i );
+	}
+
+      for(i = 1 ;i <= n ; ++ i)
+	if( tl[ 0 ] < len[ i ] )
+	  tl[ 0 ] = len[ i ];
+
+      cout<<"Case #"<<tt-t+1<<": ";
+      for(i = 1 ; i <= tl[ 0 ] ; ++i )
+	  if(tl[ i ] & 1 ) 
+	    {cout<<"NO\n";goto end;}
+
+      for(i = 1 ;i <= n ; ++ i)
+	for(j = 1 ; j <= len[ i ] ; ++ j)
+	  if(c[ i ][ j ])
+	    s[ j ] ++ ;
+	  
+	}
+
+
+      cout<<ans<<"\n";
+    end:--t ;
+    }
+  return 0;
+}

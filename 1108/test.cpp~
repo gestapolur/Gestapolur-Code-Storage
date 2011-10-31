@@ -1,0 +1,42 @@
+#include<iostream>
+using namespace std;
+
+void gf( int x )
+{
+  int u = x , rt ;
+  while( u not_eq f[ u ] )
+    {
+      u = pre[ u ];
+    }
+  rt = u;
+  while( u not_eq x )
+    {
+      f[ u ] = rt ;
+    }
+  return f[ x ];
+}
+
+int gf(int a)
+{
+  if(f[ a ] == a )
+    return a;
+  int t,b;
+  t = a;
+  while(t not_eq f[ t ] )
+    t = f[ t ];
+  while(a not_eq t )
+    {
+      b = a;
+      a = f[ a ];
+      f[ b ] = t;
+    }
+  return t;
+}
+
+int main()
+{
+  bool a;
+  if( a = true and a = false)
+    {}
+  return 0;
+}

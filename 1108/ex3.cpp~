@@ -1,0 +1,29 @@
+/* binary graph in edge */
+#include<iostream>
+#define MAXN 1002
+using namespace std;
+
+int e[ MAXN ];
+int lnk[ MAXN ];
+
+void find( int x )
+{
+  for( i = 1 ; i <= e[ x ] ; ++ i )
+    {
+      if( vis[ g[ x ][ i ] ] )
+	continue ;
+      int u = g[ x ][ i ];
+      vis[ u ] = true;
+      if( lnk[ u ] == -1 or find( lnk[ u ] ) )
+	{
+	  lnk[ u ] = x ;
+	  return true;
+	}
+    }
+  return false ;
+}
+
+int main()
+{
+  return 0;
+}

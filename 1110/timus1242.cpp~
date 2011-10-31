@@ -1,0 +1,17 @@
+#include<iostream>
+#define MAXN 1005
+using namespace std;
+
+int n ;
+
+void init()
+{
+  
+}
+
+int main()
+{
+  init();
+  dfs();
+  return 0;
+}

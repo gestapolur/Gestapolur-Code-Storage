@@ -1,0 +1,32 @@
+#include<iostream>
+#define MAXN 101
+#define INF 2141483647
+using namespace std;
+
+int n,r;
+int w[ MAXN ][ MAXN ];
+
+int rear,front;
+int f[ MAXN ];
+
+void bfs()
+{
+  int i;
+  for(i = 1 ;i <= n; ++ i)
+    f[ i ] = INF; 
+  return ;
+}
+
+int main()
+{
+  int i;
+  cin>>n>>r;
+  for(i = 1 ; i <= r ; ++ i)
+    {
+      cin>>u>>v>>way;
+      w[ u ][ v ] = way;
+      w[ v ][ u ] = w[ u ][ v ];
+    }
+  bfs();
+  return 0;
+}

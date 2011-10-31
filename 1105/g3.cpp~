@@ -1,0 +1,20 @@
+#include<iostream>
+using namespace std;
+
+int c,d,v[MAXN],p[ MAXN ];
+
+int main()
+{
+  int i,j,k;
+  int t,tt;
+
+  cin>>tt;
+  t = 1;
+  while ( t <= tt )
+    {
+      cout<<"Case #"<<t<<": ";
+      cin>>c>>d;
+      ++t;
+    }
+  return 0;
+}

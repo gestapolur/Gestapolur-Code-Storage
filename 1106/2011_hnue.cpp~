@@ -1,0 +1,91 @@
+/*
+  HNU 2011 E
+  write by Gestapolur
+  daily training
+  2011-06-15
+*/
+#include<iostream>
+#define MAXN 523265
+using namespace std;
+
+int s[ MAXN ] , pos[ MAXN ] , con[ MAXN ];
+int f[ MAXN ];
+int w[ 17 ] , c[ 17 ][ 17 ] , val[ MAXN ];
+int n,m,tp,fst,tot,ans;
+
+void gen()
+{
+  int i , p , now , cnt , pre ;
+  for( i = 1 ; i <= fst ; ++ i)
+    pos[ i ] = 0 , con[ i ] = 0 ;
+  p = 1 ;now = 1;con[ now ] = 1 ;pos[ now ] = 1;
+  while( now > 0 )
+    {
+       cout<<now<<"\n";cin.get();
+      
+      if( p < n and con[ now  ] < 3 )
+	{
+	  pos[ now ] = ++p;// p is the last digit that sequence in
+	  con[ now | ( 1 << p ) ] = con[ now ] + 1;
+	  now |= 1 << p ;
+	}
+      else
+	{
+	  //count the value
+	  // cout<<now<<" !!\n";cin.get();
+	  if( con[ now ] == 3 )
+	    {
+	      s[ ++ tot ] = now;
+	      i = now , cnt = 0 , pre = 0 ;
+	      while ( i > 0 )
+		{
+		  if( i & 1 ) 
+		    {
+		      if( pre )
+			val[ tot ] += c[ pre ][ cnt ]; 
+		      val[ tot ] += w[ cnt ];
+		      pre = cnt;
+		    }
+		  i >>= 1;
+		}
+	    }
+	  now ^= 1 << p;
+	  p = pos[ now ];
+	}
+    }
+  return ;
+}
+
+int main()
+{
+  int t,i,j;
+  cin>>t;
+  while ( t > 0 )
+    {
+      cin>>m>>n;
+      fst = (1 << n + 1) - 1 >> (n - 3 * m ) << ( n - 3 * m );
+      cout<<fst<<"\n";
+      for( i = 1 ; i <= n ; ++ i)
+	cin>>w[ i ];
+      for( i = 1 ; i <= n ; ++ i )
+	for( j = 1 ; j <= n ; ++ j )
+	  cin>>c[ i ][ j ];
+      tot = 0;
+      cout<<"!!!!!\n";
+      gen();
+      cout<<"-----------\n";
+      ans = 0 ;
+      for( i = 1 ; i <= fst ; ++ i)
+	{
+	  for( j = 1 ; j <= tot ; ++ j )
+	    if( i & s[ j ] == s[ j ] and f[ i ] < f[ i ^ s[ j ] ] + val[ j ] )
+	      f[ i ] = f[ i ^ s[ j ] ] + val[ j ];
+	  if( ans < f[ i ])
+	    ans = f[ i ];
+	}
+      cout<<ans<<"\n";
+      //clear
+      -- t;
+    }
+  return 0;
+}

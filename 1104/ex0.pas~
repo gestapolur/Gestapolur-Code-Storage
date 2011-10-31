@@ -1,0 +1,7 @@
+program ex0
+type a = 1..100;
+var i  : integer;
+   tmp :  a;
+begin
+   writeln(i*a);
+end.

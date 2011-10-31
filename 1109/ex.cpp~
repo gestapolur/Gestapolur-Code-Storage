@@ -1,0 +1,31 @@
+#include<iostream>
+#include<cmath>
+#define ZERO 1e10-6
+using namespace std;
+
+class point
+{
+public:
+  double x , y ;
+};
+
+int dblcmp( double d )
+{
+  if( fabs( d ) < ZERO ) return 0;
+  return d > 0 ? 1 : -1 ;
+}
+
+double det( double x1 , double y1 , double x2 , double y2 )
+{ return x1 * y2 - x2 * y1 ; }
+
+void 
+
+void segcross()
+{
+  return ( () == -2 and () == -2 )
+}
+
+int main()
+{
+  return 0;
+}

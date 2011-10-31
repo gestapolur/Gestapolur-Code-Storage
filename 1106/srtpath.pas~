@@ -1,0 +1,24 @@
+program floyd;
+var
+   i,j,k,u,v,n,m : integer;
+   f		 : array[1..350,1..350] of longint;
+const 
+   INF = 1 shl 20;
+
+begin
+   readln( n , m );
+   for i := 1 to n do
+      for j := i + 1 to n do
+	 f[ i ][ j ] := INF;
+   
+   for i := 1 to m do
+   begin
+      readln( u , v , w[ u ][ v ]);
+   end;
+
+   for k := 1 to n do
+      for i := 1 to n do
+	 for j := 1 to n do
+	    if (w[ i , j ]) and () and () and ()
+   
+end.

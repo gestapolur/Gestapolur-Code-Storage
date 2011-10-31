@@ -1,0 +1,32 @@
+/*
+  wuhan 09 IC chae
+  line scan
+*/
+#include<iostream>
+#define MAXN 203
+using namespace std;
+
+double p[ MAXN ];
+int bl[ MAXN ];
+
+
+void scan()
+{
+  return ;
+}
+
+void init()
+{
+  int i;
+  return ;
+}
+
+int main()
+{
+
+  init();
+
+  scan();
+
+  return 0;
+}

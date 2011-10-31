@@ -1,0 +1,33 @@
+#include<iostream>
+#define INF 2141483647
+using namespace std;
+
+int sum;
+
+
+int main()
+{
+  //source is N+M+2 and sink is n+m+3
+  int i,j,k,need,tn,tm,;
+  cin>>tn>>tm;
+  for(i = 1;i <= tn ; ++ i)
+    {
+      cin>>k;
+      for(j=1;j<=k;j++)
+	{
+	  cin>>need;
+	  edge_add(need,n + i,INF);
+	}
+      cin>>need;
+      edge_add(i,n+m+3,need);
+      sum+=need;
+    }
+  for(i = 1;i <= tm ; ++ i)
+    {
+      cin>>need;
+      edge_add(n+m+2,i,need);
+    }
+  dfs(n+m+2,n+m+3);
+  cout<<sum-flow<<"\n";
+  return 0;
+}

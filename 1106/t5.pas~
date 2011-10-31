@@ -1,0 +1,11 @@
+program test;
+var
+   x : integer;
+begin
+   readln( x );
+   while x do
+   begin
+      writeln( x - x shr 1 shl 1 );
+      x := x div 10 ;
+   end;
+end;

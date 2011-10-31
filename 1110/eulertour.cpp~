@@ -1,0 +1,21 @@
+#include<iostream>
+#define MAXN 1002
+using namespace std;
+
+void euler()
+{
+
+  return ;
+}
+
+void init()
+{
+  return ;
+}
+
+int main()
+{
+  init();
+  euler();
+  return 0;
+}

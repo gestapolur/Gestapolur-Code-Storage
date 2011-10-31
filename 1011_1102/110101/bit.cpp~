@@ -1,0 +1,55 @@
+//binary index tree
+#include<iostream>
+#define MAXN 1001
+using namespace std;
+
+int c[MAXN],a[MAXN];
+int n;
+
+int lowbit(int a) {return a&(-a);}
+
+void modify(int p,int delta)
+{
+  while (p<=N)
+    {
+      C[p]+=delta;
+      p+=lowbit(p);
+    }
+}
+
+int sum(int p)
+{
+  int rs=0;
+  while (p)
+    {
+      rs+=C[p];
+      p-=lowbit(p);
+    }
+  return rs;
+}
+
+int main()
+{
+  int i,ins,pos;
+  cin>>n;
+  for(i = 1 ; i <= n ; ++ i)
+    {
+      cin>>ins;
+      c[ i ] = c[ i - 1 ] + ins;
+    }
+  while( 1 )
+    {
+      cin>>ins;
+      if(ins == 1)
+	{
+	  cin>>pos>>ins;
+	  modify( pos , ins );
+	}
+      else
+	{
+	  cin>>pos;
+	  cout<<sum( pos )<<"\n";
+	}
+    }
+  return 0;
+}

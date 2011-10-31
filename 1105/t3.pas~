@@ -1,0 +1,19 @@
+{state compression test 0} 
+program sc0;
+const MAXC 21;
+var
+	f : array [0..MAXC] of longint;
+	i,j,finc,n : longint;
+
+begin
+  f[ 0 ] := 1;
+  readln( n );
+  finc := 0;
+  for i := 1 to n do
+    finc := finc and (1 shl i);
+  cout<<finc<<"\n";
+  for i := 1 to finc do
+    for j := 0 to n do
+      f[ i ] := f[ i ] +  f[i xor (1 shl j)];
+  writeln(f[ finc ]);
+end.

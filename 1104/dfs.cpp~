@@ -1,0 +1,50 @@
+//all permutation in dfs
+#include<iostream>
+#define MAXN 20
+using namespace std;
+
+int p;
+int con[ MAXN ];
+int arr[ MAXN ];
+bool hash[ MAXN ];
+
+void dfs(int n)
+{
+  if(n == 0) return ;
+  else if(n == p)
+    {
+      for(int i = 1 ;i <= n ; ++ i)
+	cout<<arr[ con[ i ] ]<<" ";
+      cout<<"\n";
+      hash[ con[ n ] ] = false;
+      con[ n ] = 0 ;
+      dfs( n - 1);
+    }
+  else
+    {
+
+      do{
+	++con[ n ];
+      }while(hash[ con[ n ] ]);
+      
+      if( con[ n ] > p)
+	{
+	  hash[ con[ n ] ] = false;
+	  con[ n ] = 0 ;
+	  dfs(n - 1);
+	}
+      else
+	{
+	  hash[ con[ n ] ] = true;
+	  dfs(n + 1);
+	}
+    }
+}
+
+int main()
+{
+  int i;
+  cin>>n;
+  dfs(1);
+  return ;
+}

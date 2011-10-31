@@ -1,0 +1,27 @@
+//UVA CG CONTEST
+#include<iostream>
+#include<cstdlib>
+#include<cstdio>
+#include<cmath>
+#define ZERO 1.0e-12
+using namespace std;
+
+long double acb , cae , eab , cbd , dba;
+
+void init()
+{
+  scanf("%Lf%Lf%Lf%Lf%")
+  return ;
+}
+
+void work()
+{
+  return ;
+}
+
+int main()
+{
+  while( init() )
+    work();
+  return 0;
+}

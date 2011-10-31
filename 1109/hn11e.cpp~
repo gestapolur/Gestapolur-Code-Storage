@@ -1,0 +1,22 @@
+#include<cstdio>
+
+int main()
+{
+  int n ;
+  while( cin>>n )
+    {
+      if( n & 1 == 0 )
+        printf("Alice\n");
+      else
+        {
+          int tmp = n ;
+          while( tmp > 3 )
+            {
+              tmp >>= 1;
+              if( tmp & 1 == 0 ) {printf("Alice\n");break;}
+            }
+          if( tmp & 1 == 1 ) printf("Bob\n");
+        }
+    }
+  return 0;
+}

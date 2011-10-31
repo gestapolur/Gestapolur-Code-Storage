@@ -1,0 +1,5 @@
+program exercise
+var a,b	: integer
+begin
+   writeln(a + b);
+end;

@@ -1,0 +1,37 @@
+//costflow for binray graph
+#include<iostream>
+#define MAXN 1002
+#define INF 1000000000
+using namespace std;
+
+int q[ MAXN * 3 ];
+int w[ MAXN ][ MAXN] , pre[ MAXN] , mark[ MAXN ];
+int n , m ;
+bool in[ MAXN ];
+
+bool findflow()
+{
+  for( i = 1 ; i <= n ; ++ i )
+    {
+      in[ i ] = false;
+    }
+  return mark[ i ] < INF ;
+}
+
+void aug()
+{
+
+}
+
+void init()
+{
+  return ;
+}
+
+int main()
+{
+  init();
+  while( findflow() )
+    aug();
+  return 0;
+}

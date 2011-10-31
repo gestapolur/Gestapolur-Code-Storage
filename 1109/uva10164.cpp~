@@ -1,0 +1,31 @@
+//UVA 10164
+#include<iostream>
+using namespace std;
+
+bool init()
+{
+
+  return ;
+}
+
+void div()
+{}
+
+void output()
+{
+  if( chsed == n )
+  for( int i = 1 ; i <= m ; ++ i )
+    if( chs[ i ] )
+      cout<<[];
+}
+
+int main()
+{
+  while( init() )
+    {
+      div();
+      output();
+    }
+  
+  return 0 ;
+}

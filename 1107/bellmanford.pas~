@@ -1,0 +1,30 @@
+program bellman_ford;
+const
+   MAXN	= 10000;
+   MAXE	= MAXN*MAXN;
+   INF	= 20000000;
+var
+   n,m	 : longint;
+   w,u,v : array[ 1..MAXE ] of longint;
+   d	 : array[ 1..MAXN ] of longint;
+   i,j	 : longint;
+
+procedure bellmanford(x	: longint );
+begin
+
+   
+end; { bellmanford }
+
+
+begin
+   readln( n , m );
+   for i := 1 to 2*m do
+   begin
+      readln( u[ i ] , v[ i ] , w[ i ])
+      inc( i );
+      u[ i ] := v[ i - 1 ] ; v[ i ] := v[ i - 1 ] ; w[ i ] := w[ i - 1 ] ; 
+   end;
+
+   bellmanford( 1 );
+   
+end.

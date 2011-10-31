@@ -1,0 +1,68 @@
+//SRM498 DIV2 500
+#include<iostream>
+#include<vector>
+#include<string>
+using namespace std;
+
+class FoxSequence
+{
+public:
+
+string isValid(vector <int> seq)
+  {
+    int a,b,c,d,n;
+    int i,j,k,v;
+    n = seq.size();
+    d1 = seq[ 1 ] - seq[ 0 ];
+    d2 = seq[ n - 1 ] - seq[ n - 2 ];
+    for(i = 0 ; i < n ; ++ i)
+      for(j = i + 1 ; j < n ; ++ j)
+	for(k = j ; k < n ; ++ k )
+	  for(v = k + 1 ; v < n ; ++ v)
+	    {
+	      int w,tmp;
+	      for(w = 1 ; w < i ; ++ w)//p1
+		if(seq[ w + 1 ] - seq[ w ] not_eq d1)
+		  break;
+
+	      for(w = n - 2 ; w > k ; -- w)//p5
+		if(seq[ w + 1] - seq[ w ] not_eq d2)
+		  break;
+
+	      tmp = seq[ i + 2] - seq[ i + 1];//p2
+	      for(w = i + 2 ; w <= j ; ++ w)
+		if(seq[ w ] - seq[ w - 1] not_eq tmp)
+		  break;
+
+	      for(w = j + 1 ; w < k ; ++ w)//p3
+		if(seq[ w ] not_eq seq[ w + 1 ])
+		  break;
+	      
+	      tmp = seq[ k + 2 ] - seq[ k + 1]; 
+	      for(w = k + 2 ; w <= v ; ++ w)
+		if(seq[ w ] - seq[ w - 1 ] not_eq tmp)
+		  break;
+
+	      return "YES";
+	    }
+    return "NO";
+  }  
+};
+
+FoxSeqence test;
+
+int main()
+{
+  vector <int> a;
+  int i,n,tmp;
+
+  cin>>n;
+  for(i = 1;i <= n ; ++ i)
+    {
+      cin>>tmp;
+      a.push_back(tmp);
+    }
+
+  cout<<test.isValid(a)<<"\n";
+  return 0;
+}

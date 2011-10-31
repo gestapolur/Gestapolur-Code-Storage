@@ -1,0 +1,12 @@
+g++ -o gen gen.cpp 
+./gen > data.in
+./stp1 < data.in > out1.out
+./stp2 < data.in > out2.out
+diff out1.out out2.out
+#diff out1.out out2.out
+#while [ "`diff out1.out out2.out`" == "" ]
+#do
+#./gen > data.in
+#./stp1 < data.in > out1.out
+#./stp2 < data.in > out2.out
+#done

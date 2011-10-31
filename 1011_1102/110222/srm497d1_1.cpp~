@@ -1,0 +1,44 @@
+//SRM 497 DIV1 250
+#include<iostream>
+#include<string>
+#include<vector>
+using namespace std;
+
+class PermutationSignature
+{
+public:
+  vector <int> reconstruct(string signature)
+  {
+    int i,j,n;
+    //vector < int > ans;
+    //vector < int > tmp;
+    n = signatrue.size();
+    vector < int > ans ( n + 1);
+    for(i = 1 ; i < n ; ++ i)
+      {
+	if(signature[ i ] == 'D')
+	  {
+	    ans[ i ] = ans[ i - 1 ];
+	    for(j = i - 1 ; j >= 0 ; -- j)
+	      ++ans[ j ];
+	  }
+	else
+	  {
+	    ans[ i ] = ans[ i - 1 ];
+	    for(j = i + 1 ; j < n ; ++ j)
+	  }
+      }
+    for( i = 0; i < n ; ++ i)
+      cout<<ans[ i ]<<" ";
+    cout<<"\n";
+    return ans;
+  }
+}
+
+
+
+
+int main()
+{
+  return 0;
+}

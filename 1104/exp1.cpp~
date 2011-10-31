@@ -1,0 +1,18 @@
+#include<iostream>
+#include<string>
+using namespace std;
+
+string c[ 2002 ];
+
+int main()
+{
+  int m,i,j;
+  m = 2000;
+  for(i = 1 ; i <= m ; ++ i )
+    for(j = 1 ; j <= m ; ++ j)
+      c[ i ].push_back('%');
+  for(i = 1 ; i <= m ; ++ i )
+    cout<<c[ i ]<<"\n";
+
+  return 0;
+}

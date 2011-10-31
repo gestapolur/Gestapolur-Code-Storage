@@ -1,0 +1,11 @@
+//CF #88 B
+#include<iostream>
+using namespace std;
+
+int a , b , m;
+
+int main()
+{
+  cin>>a>>b>>m;
+  return 0;
+}

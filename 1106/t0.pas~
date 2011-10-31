@@ -1,0 +1,23 @@
+program segtree;
+type treenode = record
+		   add,l,r : integer;
+		end;	   
+var			   
+   node	: [0..100000] of treenode;
+   n,m	: longint;
+
+procedure create();
+begin
+end; { create }
+
+procedure insert();
+begin
+end; { insert }
+
+function find():longint;
+begin
+end;
+
+begin
+   while 
+end.

@@ -1,0 +1,32 @@
+//UVA 10236
+#include<iostream>
+#define MAXN 22002
+using namespace std;
+
+int p[ MAXN ];
+
+void genp()
+{
+  int i = 1 ;
+  for( i = 1 ; i <= n ; ++ i )
+    {}
+  return ;
+}
+
+int main()
+{
+  int n; 
+  genp();
+  while( cin >> n )
+    {
+      if( n == 0 ) break;
+      else if( n == 1  ) cout<<"2\n";
+      else if( n == 2 ) cout<<"3\n";
+      else
+        {
+          int k = search( n );
+          if( k > 0 ) cout<<p[ k ]<<"\n";
+        }
+    }
+  return 0;
+}

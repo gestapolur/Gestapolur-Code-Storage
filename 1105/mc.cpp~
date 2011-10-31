@@ -1,0 +1,12 @@
+//Gprob #002 steins;gate
+#include<iostream>
+#define MAXN 1005
+using namespace std;
+
+int f[ MAXN ][ MAXN ];
+
+int main()
+{
+
+  return 0;
+}
