@@ -1,0 +1,8 @@
+
+class SRMSystemTestPhase
+{
+  int countWays(vector <string> description)
+  {
+    
+  }
+}

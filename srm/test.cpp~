@@ -1,0 +1,27 @@
+#include<iostream>
+#include<algorithm>
+#include<vector>
+#include<string>
+#include<cstring>
+#define MAXN 53
+#define MOD 1000000007
+using namespace std;
+
+int c( int p , int q )
+{
+  int del , s , t , i ;
+  del = p - q ; s = 1 ;
+  for( i = 1 ; i <= del ; ++ i )
+    s *= i ; 
+  t = p;
+  for( i = p + 1 ; i <= q ; ++ i )
+    t *= i ;
+  return t / s ;
+}
+
+int main()
+{
+  int n , m ;
+  cin>>n>>>m;
+  cout<<c( m , n )<<"\n";
+}

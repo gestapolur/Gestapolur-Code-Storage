@@ -1,0 +1,22 @@
+//520
+#include<iostream>
+#include<algorithm>
+#include<vector>
+#include<string>
+using namespace std;
+
+class SRMRoomAssignmentPhase
+{
+public:
+  int countCompetitors(vector <int> a, int k)
+  {
+    vector < int > b = a;
+    sort( b , b + b.size() );
+    
+  }
+};
+
+int main()
+{
+  return 0;
+}

@@ -1,0 +1,21 @@
+//520
+#include<iostream>
+#include<algorithm>
+#include<vector>
+#include<string>
+#define MAXN 53
+using namespace std;
+
+class SRMCodingPhase
+{
+public:
+  int countScore(vector <int> points, vector <int> skills, int luck)
+  {
+    
+  }
+};
+
+int main()
+{
+  return 0 ;
+}
