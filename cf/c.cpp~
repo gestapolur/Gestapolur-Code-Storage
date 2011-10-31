@@ -1,0 +1,20 @@
+#include<iostream>
+#include<vector>
+#include<cstring>
+#include<cstdlib>
+#include<cstdio>
+using namespace std;
+
+long long l , r ;
+
+void init()
+{
+  cin>>l>>r;
+  return ;
+}
+
+int main()
+{
+  init();
+  return 0;
+}

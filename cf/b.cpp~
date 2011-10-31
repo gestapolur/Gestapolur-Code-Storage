@@ -1,0 +1,17 @@
+#include<iostream>
+#include<vector>
+#include<string>
+#include<cstring>
+#include<cstdlib>
+#include<cstdio>
+#define MAXN 
+using namespace std;
+
+
+
+int main()
+{
+  init();
+  work();
+  return 0;
+}

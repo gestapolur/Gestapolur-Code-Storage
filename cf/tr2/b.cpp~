@@ -1,0 +1,44 @@
+#include<iostream>
+#include<cmath>
+#include<cstring>
+#include<cstdlib>
+#include<cstdio>
+#define MAXN 1002
+using namespace std;
+
+string a;
+string b[ MAXN ];
+bool w[ MAXN ][ MAXN ];
+int block , n , cnt ;
+int st[ MAXN ];
+
+int main()
+{
+  int i , j , pre ;
+  string tmp ;
+  cin>>a;
+  n = a.size();
+  for( i = 0 ; i < n ; ++ i )
+    if( a[ i ] == '<' ) pre = i ;
+    else if( a[ i ] == '>' )
+      for( j = pre ; j <= a[ i ] ; ++ j )
+        b[ ++ cnt ].push_back( a[ i ] );
+  
+  for( i = 1 ; i < cnt ; ++ i )
+    for( j = i + 1  ; j <= cnt ; ++ j )
+      if( b[ i ][ 1 ] == b[ j ][ 2 ] )
+        w[ i ][ j ] = w[ j ][ i ] = true;
+
+  block = 0 ; pre = 0 ;
+  for( i = 1 ; i <= cnt ; ++ i )
+    {
+      if( w[ st[ st[ 0 ] ] ][ i ] )
+        -- block;
+      else 
+        st[ ++ st[ 0 ] ] = i ;
+      for( j = 1 ; j <= block ; ++ j ) cout<<" ";
+      cout<<b[ i ]<<"\n";
+    }
+
+  return 0;
+}

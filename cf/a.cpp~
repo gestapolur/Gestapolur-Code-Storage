@@ -1,0 +1,12 @@
+#include<iostream>
+#include<vector>
+#include<cstring>
+#include<cstdlib>
+#include<cstdio>
+using namespace std;
+
+int main()
+{
+  init();
+  return 0;
+}

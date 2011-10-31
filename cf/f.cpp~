@@ -1,0 +1,49 @@
+#include<iostream>
+#include<fstream>
+#include<vector>
+#include<string>
+#include<cstring>
+#include<cstdlib>
+#include<cstdio>
+#define MAXN 102
+using namespace std;
+
+/*
+ifstream cin("input.txt");
+ofstream cout("output.txt");
+*/
+int n , m ;
+int w[ MAXN ][ MAXN ];
+
+void dfs()
+{
+  return ;
+}
+
+void init()
+{
+  int i; 
+  cin>>m;
+  memset( w , 0 , sizeof( w ) );
+  for( i = 1 ; i < m ; ++ i )
+    {
+      cin>>u>>v;
+      w[ u ][ ++ w[ u ][ 0 ] ] = v;
+      w[ v ][ ++ w[ v ][ 0 ] ] = u;
+    }
+  return ;
+}
+
+int main()
+{
+  cin>>n;
+  for( int i = 1 ; i <= n ; ++ i )
+    {
+      init();
+      dfs();
+      find
+      ans += cnt;
+    }
+  cout<<ans<<"\n";
+  return 0;
+}
