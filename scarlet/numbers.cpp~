@@ -1,0 +1,20 @@
+/*CERC 2007 numbers */
+#include<iostream>
+using namespace std;
+
+void init()
+{
+
+}
+
+void work()
+{
+
+}
+
+int main()
+{
+  while( init() )
+    work();
+  return 0 ;
+}

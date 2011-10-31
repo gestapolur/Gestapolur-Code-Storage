@@ -1,0 +1,19 @@
+#include<iostream>
+using namespace std;
+
+void dp()
+{
+
+}
+
+void init()
+{
+
+}
+
+int main()
+{
+  while( init() )
+      dp();
+  return 0;
+}

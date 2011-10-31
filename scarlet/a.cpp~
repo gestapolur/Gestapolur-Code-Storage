@@ -1,0 +1,42 @@
+#include<iostream>
+#include<cstdlib>
+#include<cstdio>
+#include<cstring>
+#define MAXN 17 
+using namespace std;
+
+int n , m ;
+int org[ MAXN ];
+
+class state
+{
+public:
+  int s[ MAXN ];
+  int step;
+};
+
+bool init()
+{
+  cin>>n>>m;
+  char ch; 
+  if( n == 0 and m == 0 ) return false ;
+  for( int i = 1 ; i <= n ; ++ i )
+    {
+      for( int j = 1 ; j <= m ; ++ j )
+        {
+          ch = cin.get();
+          org[ i ] |= ; 
+        }
+      cin.get();
+    }
+  return ;
+}
+
+int main()
+{
+  while( init() )
+    {
+      work();
+    }
+  return 0;
+}

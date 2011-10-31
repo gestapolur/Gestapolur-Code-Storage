@@ -1,0 +1,24 @@
+#include<iostream>
+#define MAXN 22
+using namespace std;
+
+int n , m; 
+int maxx[ MAXN ];
+
+void 
+
+bool init()
+{
+  if( cin>>n>>m )
+    return true ;
+  return false ;
+}
+
+int main()
+{
+  while( init() )
+    {
+      work();
+    }
+  return 0;
+}
