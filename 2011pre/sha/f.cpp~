@@ -1,0 +1,24 @@
+#include<iostream>
+#define MAXN 6
+using namespace std;
+
+int n , m ;
+int w[ MAXN ][ MAXN ];
+bool mat[ MAXN ][ MAXN ];
+
+void dfs()
+{
+  return ;
+}
+
+int main()
+{
+  while( cin>>n>>m )
+    {
+      for( i = 1 ; i <= n ; ++ i )
+        for( j = 1 ; j <= m ; ++ j )
+          dfs( i , j );
+      cout<<cnt<<"\n";
+    }
+  return 0 ;
+}

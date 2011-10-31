@@ -1,0 +1,46 @@
+#include<iostream>
+#define MAXN 50004
+using namespace std;
+
+class treenode
+{
+public:
+  int l , r ;
+};
+
+bool a[ MAXN ];
+
+void init()
+{
+  char ch;
+  cin>>n>>m;
+  for(int i = 1 ; i <= n ; ++ i )
+    {
+      cin>>ch;
+      if( ch == 'b' )
+        a[ i ] = true;
+      else
+        a[ i ] = false;
+    }
+  return ;
+}
+
+void work()
+{
+
+}
+
+int main()
+{
+  int t;
+  cin>>t;
+  while( t -- )
+    {
+
+      init();
+
+      work();
+
+    }
+  return 0;
+}

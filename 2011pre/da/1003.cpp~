@@ -1,0 +1,34 @@
+#include<iostream>
+using namespace std;
+
+int n , s , k ;
+
+int f[ MAXN ][ MAXK ] , edge[ MAXN ];
+
+int lnk[ MAXN ];
+
+void dfs()
+{
+  return ;
+}
+
+void dp( int x , int k )
+{
+
+  return ;
+}
+
+int main()
+{
+  while( cin>>n>>s>>k )
+    {
+      init();
+    
+      dfs();
+  
+      dp( s , k );
+      
+      cout<<f[ s ][ k ]<<"\n";
+    }
+  return 0;
+}

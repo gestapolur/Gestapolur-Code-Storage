@@ -1,0 +1,19 @@
+#include<iostream>
+#define MAXN 204
+using namespace std;
+
+int n , m ;
+
+void init()
+{}
+
+int main()
+{
+  cin>>t;
+  while( t -- )
+    {
+      init();
+      cout<<dp( 1 , m )
+    }
+  return 0;
+}

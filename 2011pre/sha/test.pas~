@@ -1,0 +1,7 @@
+program tst;
+var
+   x : longint;
+begin
+   readln( x );
+   sqrt( x );
+end.

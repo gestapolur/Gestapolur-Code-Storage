@@ -1,0 +1,65 @@
+//B
+#include<iostream>
+#include<algorithm>
+#define MAXN 100005
+using namespace std;
+
+int n , m , cx , cy , cnt ;
+int nx[ MAXN ] , ny[ MAXN ];
+int mx[ MAXN ] , my[ MAXN ];
+
+bool sx( int x )
+{
+  int l = 1 , r = cx , mid ;
+  while( l <= r )
+    {
+      mid = l + r >> 1;
+      if( mx[ mid ] > x )
+        r = mid ;
+      else if( mx[ mid ] < x ) l = mid + 1;
+      else return true;
+    }
+  return false;
+}
+
+bool sy( int x )
+{
+  int l = 1 , r = cy , mid ;
+  while( l <= r )
+    {
+      mid = l + r >> 1;
+      if( my[ mid ] > x )
+        r = mid ;
+      else if( my[ mid ] < x ) l = mid + 1;
+      else return true;
+    }
+  return false;
+}
+
+
+int main()
+{
+  bool c;
+  while( cin>>n>>m )
+    {
+      for( int i = 1 ; i <= n ; ++ i )
+        cin>>nx{ i }>>ny[ i ];
+      cx = cy = cnt = 0 ;
+      for( int i = 1 ; i <= m ; ++ i )
+        {
+          cin>>c;
+          if( not c ) cin>>mx[ ++ cx ];
+          else cin>>my[ ++ cy ];
+        }
+      sort( mx + 1 , cx + 1 );
+      sort( my + 1 , cy + 1 );
+      for( int i = 1 ; i <= n ; ++  i )
+        {
+          if( not ( nx[ i ] == nx[ i - 1 ] and ny[ i ] == ny[ i - 1 ] ) and 
+              sx( nx[ i ] ) or sy( ny[ i ] ) )
+            ++cnt;
+        }
+      cout<<n - cnt<<"\n";o
+    }
+  return 0;
+}
