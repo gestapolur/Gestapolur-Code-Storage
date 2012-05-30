@@ -1,0 +1,4 @@
+python3 1158_test.py
+./timus1158_cmp < test.in > t1.out
+./test < test.in > t2.out
+diff t1.out t2.out

@@ -1,0 +1,11 @@
+/*
+  SGU 214
+  2012-03-14
+  gestapolur
+*/
+#include<iostream>
+#define MAXA 202
+#define MAXN 2002
+
+int n;
+int a[ MAXN ]

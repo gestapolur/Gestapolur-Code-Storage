@@ -1,0 +1,89 @@
+/*
+  2012 ACM-ICPC JINHUA INVITED PROB D Garden
+  2012-05-09
+*/
+#include<iostream>
+#include<cstdlib>
+#include<cstdio>
+#include<cstring>
+#define MAXN 200005
+using namespace std;
+
+int n , m , wide;
+int idt[ MAXN ];
+
+int L( int k )
+{ return ( k & -k ); }
+
+int getsum( int idx )
+{
+  int s = 0;
+  while( idx )
+    {
+      s += idt[ idx ];
+      idx -= L( idx );
+    }
+  return s;
+}
+
+void bit_update( int idx , int del )
+{
+  while( idx <= n )
+    {
+      idt[ idx ] += del;
+      idx += L( idx );
+    }
+  return ;
+}
+
+void init()
+{
+  int ins , sx , sy;
+  
+  memset( idt , 0 , sizeof( idt ) );
+  
+  cin>>n>>m>>wide;
+  /*
+  for( int i = 1 ; i <= n ; ++ i )
+    {
+      cin>>ins>>sx>>sy;
+      if( not ins )
+        {
+          bit_update( sx , sy - idt[ sx ] );
+        }
+      else if( ins == 2 )
+        {
+          bit_update( sx , sy - idt[ sx ] );
+        }
+      else
+        {
+          ans = 0;
+          for( k = 1 ; k + wide <= n ; ++ k )
+            {
+              del = getsum( k + wide ) - getsum( k );
+              ans = ans > del ? ans : del;
+            }
+          cout<<ans<<"\n";
+        }
+    }
+  */
+  int tmp;
+  for( int i = 1 ; i <= n ; ++ i )
+    {
+      cin>>tmp;
+      cout<<getsum( i - 1 )<<"\n";
+      bit_update( i , tmp );
+    }
+  return ;
+}
+
+int main()
+{
+  int t;
+  cin>>t;
+  while( t -- )
+    {
+      init();
+    }
+  return 0;
+}

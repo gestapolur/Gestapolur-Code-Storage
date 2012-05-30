@@ -1,0 +1,11 @@
+import random;
+
+p = open( 'test.in' , 'w' );
+
+p,write( "50 50 10\n" );
+
+for i in range( 1 , 50 ):
+    a = random.randint( -127 , 128 )
+    p.write( str( a ) );
+
+p.write("\n");

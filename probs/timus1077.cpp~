@@ -1,0 +1,187 @@
+/*
+  TIMUS 1077
+  2012-04-12
+  2012-04-20
+  write by gestapolur
+*/
+#include<iostream>
+#include<cstdlib>
+#include<cstdio>
+#include<cstring>
+#include<vector>
+#include<queue>
+#define MAXN 205
+using namespace std;
+
+int n , m , tot , qsize;
+int w[ MAXN ][ MAXN ];
+int u[ MAXN * MAXN ] , v[ MAXN * MAXN ] , pre[ MAXN ];
+bool in[ MAXN * MAXN ] , vv[ MAXN ];
+int inq[ MAXN ];
+vector <int> sv[ MAXN ];
+
+void work()
+{
+  int i , t , j;
+  int tu , tv , tl , tr;
+  int sl[ MAXN ] , sr[ MAXN ];
+  bool added;
+
+  do{
+    added = false;
+    for( i = 1 ; i <= qsize ; ++ i )
+      {
+        t = pre[ inq[ i ] ];
+        while( t )
+          {
+            cout<<w[ t ][ inq[ i ] ]<<" "<<t<<" "<<inq[ i ]<<"\n";
+            if( w[ t ][ inq[ i ] ] and not in[ w[ t ][ inq[ i ] ] ] )
+              {
+                added = true;
+                in[ w[ t ][ inq[ i ] ] ] = true;
+                tl = 0 ; tr = 0;
+                tu = t; tv = inq[ i ];
+                while( tv not_eq tu )
+                  { 
+                    if( pre[ tv ] )
+                      {
+                        sl[ ++ tl ] = tv;
+                        tv = pre[ tv ];
+                      }
+                    if( pre[ tu ] )
+                      {
+                        sr[ ++ tr ] = tu;
+                        tu = pre[ tu ];
+                      }
+                    
+                    if( tu == tv and tu )
+                      sr[ ++ tr ] = tu;
+                    
+                  }
+                
+                ++ tot;
+                //sv[ tot ].push_back( i );
+                for( j = 1 ; j <= tl ; ++ j )
+                  sv[ tot ].push_back( sl[ j ] );
+                for( j = tr ; j ; -- j )
+                  sv[ tot ].push_back( sr[ j ] );
+              
+              }
+            t = pre[ t ];
+          }
+      }
+    /*
+    for( i = 1 ; i <= m ; ++ i )
+      if( not in[ i ] and ( vv[ u[ i ] ] & vv[ v[ i ] ] ) )
+        {
+          in[ i ] = true;
+          tl = 0 ; tr = 0;
+          tu = u[ i ]; tv = v[ i ];
+          while( tv not_eq tu )
+            { 
+              if( pre[ tv ] )
+                {
+                  sl[ ++ tl ] = tv;
+                  tv = pre[ tv ];
+                }
+              if( pre[ tu ] )
+                {
+                  sr[ ++ tr ] = tu;
+                  tu = pre[ tu ];
+                }
+              
+              if( tu == tv and tu )
+                sr[ ++ tr ] = tu;
+              
+            }
+
+          ++ tot;
+          //sv[ tot ].push_back( i );
+          for( t = 1 ; t <= tl ; ++ t )
+            sv[ tot ].push_back( sl[ t ] );
+          for( t = tr ; t ; -- t )
+            sv[ tot ].push_back( sr[ t ] );
+        
+          //test
+          
+          cout<<sv[ tot ].size()<<" "<<u[ i ]<<" "<<v[ i ]<<"\n";
+          for( t = 1 ; t <= n ; ++ t )
+            cout<<pre[ t ]<<" ";
+          cout<<"\n";
+    
+          
+        }
+    */
+    if( not added )
+      for( i = 1 ; i <= m ; ++ i )
+        if( not in[ i ] and ( vv[ u[ i ] ] | vv[ v[ i ] ] ) and not ( vv[ u[ i ] ] & vv[ v[ i ] ] ) )
+          {
+            in[ i ] = true;
+            added = true;
+            tu = u[ i ]; tv = v[ i ];
+            if( not vv[ u[ i ] ] )
+              { t = tu; tu = tv ; tv = t; }
+            vv[ tv ] = true;
+            pre[ tv ] = tu;
+            inq[ ++ qsize ] = tv;
+            break;
+          }
+
+    if( not added )
+      for( i = 1 ; i <= m ; ++ i )
+        if( not in[ i ] and not ( vv[ u[ i ] ] | vv[ v[ i ] ] ) )
+          {
+            in[ i ] = true;
+            added = true;
+            vv[ u[ i ] ] = true;
+            vv[ v[ i ] ] = true;
+            inq[ ++ qsize ] = u[ i ];
+            inq[ ++ qsize ] = v[ i ];
+            pre[ v[ i ] ] = u[ i ];
+            break;
+          }
+    
+    for( i = 1 ; i <= qsize ; ++ i )
+      cout<<inq[ i ]<<" ";
+    cout<<"\n";
+    cout<<" pre : ";
+    for( i = 1 ; i <= n ; ++ i ) cout<<pre[ i ]<<" "; cout<<"\n";
+  }while( added );
+
+  cout<<tot<<"\n";
+  for( i = 1 ; i <= tot ; ++ i )
+    {
+      cout<<sv[ i ].size()<<" ";
+      for( t = sv[ i ].size() - 1 ; t ; -- t )
+        cout<<sv[ i ][ t ]<<" ";
+      cout<<sv[ i ][ 0 ]<<"\n";
+    }
+
+  return ;
+}
+
+void init()
+{
+  int i , s , t;
+
+  cin>>n>>m;
+  for( i = 1 ; i <= m ; ++ i )
+    {
+      cin>>s>>t;
+      u[ i ] = s;
+      v[ i ] = t;
+      w[ s ][ t ] = i;
+      w[ t ][ s ] = i;
+    }
+
+  return ;
+}
+
+int main()
+{
+  init();
+
+  work();
+
+  return 0;
+}

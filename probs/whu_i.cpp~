@@ -1,0 +1,31 @@
+#include<iostream>
+#define MAXN 1002
+using namespace std;
+
+int f[ MAXN ];
+int h , n;
+
+void dp()
+{
+  int i , j;
+  
+  memset( f , 0 , sizeof( f ) );
+  f[ 1 ] = h;
+  for( i = 1 ; i <= n ; ++ i )
+    for( j = 1 ; j < i ; ++ j )
+      if( f[ i ] < f[ j ] * ( i - j ) + j )
+        f[ i ] = f[ j ] * ( i - j ) + j;
+ 
+  for( i = 1 ; i <= n ; ++ i )
+    cout<<f[ i ]<<" ";
+  cout<<"\n";
+  return ;
+}
+
+int main()
+{
+  while( cin>>h>>n )
+      dp();
+  
+  return ;
+}

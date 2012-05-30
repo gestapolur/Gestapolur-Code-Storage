@@ -1,0 +1,30 @@
+#include<iostream>
+#include<cstdlib>
+#include<cstdio>
+using namespace std;
+
+int main()
+{
+  int t;
+  cout<<"15\n";
+  cout<<"5 5 5\nABCDE\nABCDE\nABCDE\nABCDE\nABCDE\nAAAAA\nBBBBB\nCCCCC\nDDDDD\nEEEEE\n";
+  t = 14;
+  srand( time( 0 ) );
+  while( t -- )
+    {
+      cout<<1000<<" "<<1000<<" "<<1000<<"\n";
+      for( int i = 1 ; i<= 1000 ; ++ i )
+        {
+          for( int j = 1 ; j <= 1000 ; ++ j )
+            cout<<char( 'A' + rand()%26);
+          cout<<"\n";
+        }
+   
+      for( int i = 1 ; i<= 1000 ; ++ i )
+        {
+          for( int j = 1 ; j <= 1000 ; ++ j )
+            cout<<char( 'A' + rand()%26);
+          cout<<"\n";
+        }
+    }
+}

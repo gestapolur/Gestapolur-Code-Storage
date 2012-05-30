@@ -1,0 +1,27 @@
+#include<iostream>
+using namespace std;
+
+bool init()
+{
+  if( cin>>n )
+    {
+      
+      return true;
+    }
+  return false;
+}
+
+void work()
+{
+  return ;
+}
+
+int main()
+{
+  while( init() )
+    {
+      work();
+    }
+
+  return 0;
+}

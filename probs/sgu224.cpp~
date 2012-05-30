@@ -1,0 +1,32 @@
+#include<iostream>
+#define N 15
+
+int a[N],n,pt=0,ul;
+
+void compute(int row, int ld, int rd)
+    {     
+   int pos,p;
+   if (row not_eq ul)
+     {  
+   pos=ul bitand ~(row bitor ld bitor rd);  
+   while (pos not_eq 0) 
+       {  
+      p=pos bitand -pos;  
+      pos-=p;  
+      compute(row+p,ld+p<<1,rd+p>>1);  
+       }    
+     } 
+   else
+      ++pt;  
+    }  
+
+int main()
+{
+    cin>>n;
+    ul=(1<<n)-1;
+    pt=0;
+    compute(0,0,0);
+    cout<<pt<<"\n"; 
+
+    return 0;
+}

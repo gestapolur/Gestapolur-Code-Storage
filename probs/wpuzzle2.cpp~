@@ -1,0 +1,24 @@
+/*
+  SPOJ WPUZZLES
+  2012-04-07
+  rewrite
+  gestapolur
+*/
+#include<iostream>
+#include<string>
+#include<queue>
+using namespace std;
+
+void init()
+{}
+
+int main()
+{
+  init();
+
+  constr_fail();
+
+  count();
+
+  return 0;
+}

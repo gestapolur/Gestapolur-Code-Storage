@@ -1,0 +1,7 @@
+declare -i cnt
+$cnt=1
+while cnt <> 7
+do
+    
+    $cnt=$[$cnt+1]
+done

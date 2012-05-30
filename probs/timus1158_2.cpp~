@@ -1,0 +1,49 @@
+/*
+  TIMUS 1158
+  2012-04-03
+  rewrite 2
+ */
+#include<iostream>
+#include<cstring>
+#include<cstdlib>
+#include<cstdio>
+#include<queue>
+#define MAXN 102
+#define MAXM 52
+using namespace std;
+
+int n , m , p , tot , ans;
+int w[ MAXM ][ MAXN ][ MAXN ];
+
+void count()
+{
+  int i , j , k;
+  f[ 0 ][ 0 ] = 1;
+
+  for( i = 1 ; i <= tot ; ++ i )
+    ans += f[ m ][ i ];
+
+  cout<<ans<<"\n";
+
+  return ;
+}
+
+void init()
+{
+  char str[ MAXN ];
+  int len;
+  int i , j , k , pre;
+  bool move = false;
+
+  cin>>n>>m>>p>>aph;
+}
+
+
+int main()
+{
+  init();
+
+  count();
+
+  return 0;
+}

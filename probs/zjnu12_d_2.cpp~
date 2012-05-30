@@ -1,0 +1,140 @@
+#include<iostream>
+#include<cstdlib>
+#include<cstdio>
+#define MAXN 200005
+using namespace std;
+
+class treenode
+{
+public:
+  int l , r;
+  int type;//if maxsum need recalculate t = 1 , else 0
+  int maxsum;
+};
+
+treenode node[ MAXN * 3 ];
+int a[ MAXN ] , del[ MAXN ];
+int n , m , wide;
+
+void create( int l , int r , int s )
+{
+  int i = l , j = l + k , tmp;
+
+  node[ s ].l = l;
+  node[ s ].r = r;
+  node[ s ].type = 0;
+  node[ s ].maxsum = 0;
+
+  while( i <= j )
+    {
+      node[ s ].maxsum += a[ i ];
+      ++ i; 
+    }
+  tmp = node[ s ].maxsum;
+  for( ; i <= r ; ++ i )
+    {
+      tmp = tmp - a[ i - wide ] + a[ i ];
+      node[ s ].maxsum = node[ s ].maxsum > tmp ? node[ s ].maxsum ? tmp;
+    }
+    
+  if( l not_eq r )
+    {
+      int mid = l + r >> 1;
+      create( l , mid , s << 1 );
+      create( mid + 1 , ( s << 1 ) + 1 );
+    }
+  return ;
+}
+
+int find( int l , int r , int s )
+{
+  if( l == node[ s ].l and r == node[ s ].r )
+    {
+      if( node[ s ].type )
+        {
+          node[ s ].sum = node[ s ].sum - a[ node[ s ].type ] + del[ node[ s ].type ];
+          a[ node[ s ].type ] = del[ node[ s ].type ];
+          node[ s ].type = 0;
+        }
+      return node[ s ]
+    }
+  else
+    {
+      int mid = node[ s ].l + node[ s ].r >> 1;
+      if( mid < l )
+        return find();
+      else if( mid >= r )
+        return find();
+      else
+        return ;
+    }
+  return ;
+}
+
+void insert( int l , int r , int s , int ins )
+{
+  if( node[ s ].l == l and node[ s ].r == r and not node[ s ].type )
+    {
+      node[ s ].type = ins;
+      return ;
+    }
+  else
+    {
+      if( node[ s ].l )
+        ;
+    }
+  return ;
+}
+
+void work()
+{
+  int ins , sx , sy , tmp;
+
+  for( int i = 1 ; i <= m ; ++ i )
+    {
+      cin>>ins>>sx>>sy;
+      if( !ins )
+        {
+          del[ sx ] = sy;
+          insert( sx , sx , 1 );
+        }
+      else if( ins == 1 )
+        {
+          del[ sx ] = a[ sy ];
+          del[ sy ] = a[ sx ];
+          insert( sx , sx , 1 );
+          insert( sy , sy , 1 );
+        }
+      else
+        cout<<find( sx , sy , 1 )<<"\n";
+    }
+  return ;
+}
+
+void init()
+{
+  int i;
+
+  scanf( "%d%d%d" , &n , &m , &wide );
+  for( i = 1 ; i <= n ; ++ i )
+    scanf( "%d" , &a[ i ] );
+
+  return ;
+}
+
+int main()
+{
+  int t;
+  scanf( "%d" , &t );
+  
+  while( t -- )
+    {
+      init();
+
+      create( 1 , n , 1 );
+
+      work();
+    }
+
+  return 0;
+}
