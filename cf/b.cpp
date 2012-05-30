@@ -1,26 +1,54 @@
 #include<iostream>
-#include<vector>
-#include<cstring>
 #include<cstdlib>
 #include<cstdio>
+#include<cstring>
+#include<string>
+#include<vector>
+#include<cmath>
+#define MAXN 1002
 using namespace std;
+
+int n;
+int a[ MAXN ];
+bool f[ MAXN ];
+bool sync_with_stdio( bool sync = false );
 
 void init()
 {
-  string k;
-  int n , four = 0 , sev = 0 ;
-  cin>>k;
-  n = k.size();
-  for( int i = 0 ; i < n ; ++ i )
-    if( k[ i ] == '4' ) ++ four;
-    else if( k[ i ] == '7' ) ++ sev;
-  if( four == 0 and sev == 0 ) cout<<"-1\n";
-  else if( four >= sev ) cout<<"4\n";
-  else cout<<"7\n";
+  cin>>n;
+  for( int i = 1 ; i <= n ; ++ i )
+    cin>>a[ i ];
+  return ;
+}
+
+void work()
+{
+  int cnt = 0;
+  int i;
+  
+  do{
+    for( i = 1 ; i <= n ; ++ i ) f[ i ] = false; 
+
+    if( a[ 1 ] ) f[ 1 ] = true;
+    if( a[ 2 ] and f[ 1 ] ) f[ 2 ] = true;
+
+    for( i = 3 ; i <= n ; ++ i )
+      if( a[ i ] and ( f[ i - 1 ] or f[ i - 2 ] ) )
+        f[ i ] = true;
+    for( i = 1 ; i <= n ; ++ i )
+      if( a[ i ] ) -- a[ i ];
+    ++ cnt;
+  }while( f[ n ] );
+
+  cout<<cnt-1<<"\n";
+  return ;
 }
 
 int main()
 {
   init();
+  
+  work();
+
   return 0;
 }

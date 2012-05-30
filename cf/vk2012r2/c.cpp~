@@ -1,0 +1,24 @@
+#include<iostream>
+#include<cstdlib>
+#include<cstdio>
+#include<cstring>
+#include<string>
+#include<vector>
+#include<cmath>
+#define MAXN 1002
+using namespace std;
+
+string s , t;
+
+void init()
+{
+  cin>>s>>t;
+  return ;
+}
+
+int main()
+{
+  init();
+  
+  return 0;
+}

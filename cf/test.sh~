@@ -1,0 +1,6 @@
+while[ ]
+do
+./test > d.in
+./d < d.in
+echo "ok"
+done

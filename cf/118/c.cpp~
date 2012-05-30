@@ -1,0 +1,74 @@
+#include<iostream>
+#include<cstdlib>
+#include<cstdio>
+#include<cstring>
+#include<string>
+#include<vector>
+#include<cmath>
+#define MAXN 10005
+using namespace std;
+
+int n;
+int tot , cnt;
+string a[ MAXN ] , ans ;
+bool sync_with_stdio( bool sync = false );
+
+void init()
+{
+  int i = 0;
+  cin>>n;
+  while( cnt < n )
+    {
+      cin>>a[ ++ i ];
+      if( a[ i ] == "int" ) ++ cnt;
+    }
+  tot = i;
+
+  return ;
+}
+
+void work()
+{
+  int i;
+  int bl = 0 , br = 0;
+  bool conint = false;
+
+  for( i = 1 ; i <= n ; ++ i )
+    {
+      ans.push_back( a[ i ] )
+      if( a[ i ] == "pair" )
+        {
+          ans.push_back( "<" );
+          conint = false;
+          ++ bl;
+        }
+      else
+        {
+          if( conint )
+            {
+              conint = false;
+            }
+          else
+            {
+              
+              conint = true;
+            }
+        }
+     
+    }
+
+  if( tl not_eq tr )
+    cout<<"Error Occured\n";
+  else cout<<ans<<"\n";
+
+  return ;
+}
+
+int main()
+{
+  init();
+
+  work();
+  
+  return 0;
+}

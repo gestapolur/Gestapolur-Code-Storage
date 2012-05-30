@@ -1,97 +1,70 @@
+/*
+  CODEFORCES #120 DIV2 C
+  gestapolur
+  2012-05-30
+*/
 #include<iostream>
-//#include<vector>
-//#include<cstring>
-//#include<cstdlib>
-//#include<cstdio>
-//#include<cmath>
+#include<cstdlib>
+#include<cstdio>
+#include<cstring>
+#include<string>
+#include<vector>
+#include<cmath>
+#define MAXN 50002
 using namespace std;
 
-long long sum = 0 ;
-int st[ 30 ];
-
-bool check( int x )
-{
-  int y ;
-  do{
-    y = x % 10;
-    if( y not_eq 4 and y not_eq 7 ) return false ;
-    x /= 10;
-  }while( x > 0 );
-  return true ;
-}
-
-inline long long make( int x , bool sign )
-{
-  int len ; 
-  long long y ;
-  //memset( st , 0 , sizeof( st ) );
-  len = 0 , y = 0 ;
-  do{
-    st[ ++ len ] = x % 10 ;
-    x /= 10 ;
-  }while( x > 0 );
-  //for( int i = 1 ; i <= len ; ++ i ) cout<<st[ i ]<<" "; cout<<"\n";
-  for( int i = 1 ; i <= len ; ++ i )
-    {
-      if( st[ i ] < 4 ) { st[ i ] = 4 ; if( not sign ) break ; }
-      else if( st[ i ] < 7 ) { st[ i ] = 7 ; if( not sign ) break ;}
-      else
-        {
-          ++ st[ i + 1 ] ;
-          if( i == len ) ++ len;
-          for( int j = i ; j > 0 ; -- j ) st[ j ] = 4 ;
-        }
-    }
-  //for( int i = 1 ; i <= len ; ++ i ) cout<<st[ i ]<<" "; cout<<"\n";
-  for( int i = len ; i > 0 ; -- i )
-    y = y * 10 + st[ i ];
-  //cout<<y<<"\n";
-  return y;
-}
+int n , ans;
+string a[ MAXN ];
+int f[ MAXN ][ 27 ][ 27 ];
+bool sync_with_stdio( bool sync = false );
 
 void init()
 {
-  long long l , r ;
-  long long tmp ;
-  cin>>l>>r;
-  //scanf( "%I64d%I64d" , &l , &r );
-  tmp = l ;
-  if( not check( l ) )
-    {
-      //cout<<"!!!\n";
-      tmp = make( tmp , true );
-      if( l == r ) sum = tmp;
-    }
-  else
-    {
-      sum = l;
-      tmp = make( tmp , false );
-    }
-  //cout<<tmp<<"!!!\n";
-  //cin.get();cin.get();
-  if( tmp < r )
-    {
-      sum = ( tmp - l + 1 ) * tmp;
-      l = tmp ; 
-      do{
-        tmp = make( l , false );
-        if( tmp < r )
-          sum = sum +  ( tmp - l ) *  tmp ;
-        else
-          sum = sum + ( r - l )  *  tmp  ;
-        //cout<<l<<" "<<r<<" "<<tmp<<"\n";
-        l = tmp;
-      }while( l < r );
-    }
-  else
-    sum += ( r - l ) * tmp ;
-  //printf( "%I64d\n" , sum );
-  cout<<sum<<"\n";
+  cin>>n;
+  for( int i = 1 ; i <= n ; ++ i )
+    cin>>a[ i ];
+  return ;
+}
+
+void dp()
+{
+  int i , j , k , cnt;
+
+  //init
+  ans = 0;
+  for( i = 1 ; i <= n ; ++ i )
+    if( f[ 1 ][ a[ i ][ 0 ] - 'a' ][ a[ i ][ a[ i ].size() - 1 ] - 'a' ] < a[ i ].size() )
+      f[ 1 ][ a[ i ][ 0 ] - 'a' ][ a[ i ][ a[ i ].size() - 1 ] - 'a' ] = a[ i ].size();
+
+  //dp
+  for( cnt = 2 ; cnt <= n ; ++ cnt )
+     {
+       cout<<cnt<<"\n";
+       for( i = 0 ; i < 26 ; ++ i )
+         {
+           f[ cnt ][ i ][ i ] = f[ cnt - 1 ][ i ][ i ];
+           for( j = 0 ; j < 26 ; ++ j )
+             for( k = 0 ; k < 26 ; ++ k )
+               if( f[ cnt ][ i ][ i ] < f[ cnt - 1 ][ i ][ j ] + f[ cnt - 1 ][ j ][ k ] + f[ cnt - 2 ][ k ][ i ] and cnt > 1 and f[ cnt - 1 ][ i ][ j ] and cnt > 2 and f[ cnt - 2 ][ k ][ i ] )
+                 {
+                   f[ cnt ][ i ][ i ] = f[ cnt - 1 ][ i ][ j ] + f[ cnt - 1 ][ j ][ k ] + f[ cnt - 1 ][ k ][ i ];
+                   cout<<char( 'a' + i )<<" "<<char( 'a' + j )<<" "<<char( 'a' + k )<<" "<<f[ cnt ][ i ][ i ]<<"\n";
+                 }
+         }
+     }
+
+  for( i = 0 ; i < 26 ; ++ i )
+    ans = ans > f[ n - 1 ][ i ][ i ] ? ans : f[ n - 1 ][ i ][ i ];
+  cout<<ans<<"\n";
+
   return ;
 }
 
 int main()
 {
   init();
+  
+  dp();
+
   return 0;
 }

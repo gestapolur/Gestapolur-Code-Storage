@@ -1,0 +1,67 @@
+#include<iostream>
+#include<cstdlib>
+#include<cstdio>
+#include<cstring>
+#include<string>
+#include<vector>
+#include<cmath>
+#define MAXN 100002
+using namespace std;
+
+int n , m ;
+bool w[ 27 ][ 27 ];
+string a , b ;
+int tcnt[ 30 ];
+int cnt ;
+
+void init()
+{
+  char ta , tb;
+  int tmp;
+  cin>>a;
+  m = a.size();
+  
+  cin>>n;
+  cin.get();
+  for( int i = 1 ; i <= n ; ++ i )
+    {
+      cin.get( ta );
+      cin.get( tb );
+      w[ ta - 64 ][ tb - 64 ] = w[ tb - 64 ][ ta - 64 ] = true ;
+      cin.get();
+    }
+  [ ]
+  for( int i = 1 ; i < m ; ++ i )
+    {
+      memset( tcnt , 0 , sizeof( tcnt ) );
+      while( a[ i ] == a[ i - 1 ] or w[ a[ i ] - 64 ][ a[ i - 1 ] - 64 ] )
+        {
+          if( a[ i ] == a[ i - 1 ] )
+            {
+              ++ cnt[ a[ i ] ];
+            }
+          else
+            { 
+              ta = a[ i ];
+              tb = a[ i - 1 ];
+              ++ cnt[ ta ];
+            }
+        }
+      cnt += min( tcnt[ ta - 64 ] , tcnt[ tb - 64 ]);
+    }
+  cout<<cnt<<"\n";
+  return ;
+}
+
+void work()
+{
+}
+
+int main()
+{
+  init();
+
+  work();
+  
+  return 0;
+}

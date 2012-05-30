@@ -1,0 +1,77 @@
+/*
+  codeforces 154B
+  2012-02-29
+*/
+#include<iostream>
+#include<cstdlib>
+#include<cstdio>
+#include<cstring>
+#include<string>
+#include<vector>
+#include<cmath>
+#define MAXN 10002
+using namespace std;
+
+int n , m ;
+int prime[ MAXN ];
+bool nopm[ MAXN ];
+int a[ MAXN ][ 12 ];
+bool in[ MAXN ];
+int divs[ MAXN ];
+
+void isp()
+{
+  int k; 
+ 
+  for( int i = 2 ; i <= n ; ++ i )
+    if( not nopm[ i ] )
+      {
+        
+      }
+  return ;
+}
+
+void cancel( int x )
+{}
+
+void cmpdiv( int x )
+{}
+
+void init()
+{
+  cin>>n>>m;
+  char sign;
+  for( int i = 1 ; i <= m ; ++ i )
+    {
+      cin>>sign>>ins;
+      if( sign == '+')
+        {
+          if( in[ ins ] ) cout<<"Already on\n";
+          else
+            {
+              ins = cmpdiv( ins );
+              if ( ins == 0 )
+                cout<<"Success\n";
+              else
+                cout<<"Conflict with "<<ins<<"\n";
+            }
+        }
+      else
+        {
+          if( not in[ ins ] ) cout<<"Already off\n";
+          else
+            {
+              cancel( ins );
+              cout<<"Success\n";
+            }
+        }
+    }
+  return ;
+}
+
+int main()
+{
+  init();
+  
+  return 0;
+}

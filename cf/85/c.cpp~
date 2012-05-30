@@ -1,0 +1,108 @@
+//YX 2011 C
+#include<iostream>
+#include<cstdlib>
+#include<cstdio>
+#include<cstring>
+#include<string>
+#include<vector>
+#include<cmath>
+#define MAXN 100005
+using namespace std;
+
+class treenode
+{
+public:
+  int l , r , p , val ;
+};
+
+int n , root ;
+treenode node[ MAXN ];
+int st[ MAXN ];
+
+void init()
+{
+  int par , val ;  cin>>n;
+  for( int i = 1 ; i <= n ; ++ i )
+    {
+      cin>>node[ i ].p>>node[ i ].val;
+      if( node[ i ].p not_eq -1 )
+        {
+          if( node[ node[ i ].p ].val < node[ i ].val )
+            node[ node[ i ].p ].r = i ;
+          else
+            node[ node[ i ].p ].l = i ; 
+        }
+      else
+        root = i ;
+    }
+  return ;
+}
+
+void work()
+{
+  cout.setf(ios::showpoint|ios::fixed);
+  cout.precision( 9 );
+  
+  int tk , cnt , key , cur , last ;
+  long double ans ;
+  cin>>tk;
+ 
+
+  for( int i = 1 ; i <= tk ; ++ i )
+    { 
+      cin>>key;
+
+      cnt = 0;
+      cur = root;
+      while( cur not_eq 0 )
+        {
+          st [ ++ cnt ] = cur;
+          if( node[ cur ].val < key )
+            cur = node[ cur ].r;
+          else
+            cur = node[ cur ].l;
+        }
+      
+      st[ 0 ] = cnt;
+      ans = 0.000000000;
+      for( int j = 1 ; j <= cnt ; ++ j )
+        {
+          cur = root ;
+          
+          while( cur > 0 )
+            {
+              cout<<cur<<" ";
+              last = node[ cur ].val;
+              if( node[ cur ].val < key )
+                {
+                  if( cur not_eq st[ j ] )
+                    cur = node[ cur ].r;
+                  else
+                    cur = node[ cur ].l;
+                }
+              else
+                {
+                  if( cur not_eq st[ j ] )
+                    cur = node[ cur ].l;
+                  else
+                    cur = node[ cur ].r;
+                }
+            }
+          cout<<"\n";
+          ans += ( long double ) ( last );
+        }
+      cout<<cnt<<"-\n";
+      cout<<ans / ( long double ) ( cnt )<<"\n";
+    }
+    
+  return ;
+}
+
+int main()
+{
+  init();
+  
+  work();
+
+  return 0;
+}

@@ -1,0 +1,30 @@
+#include<iostream>
+#define MOD 1000000007
+using namespace std;
+
+int n , m , k ;
+
+int main()
+{
+
+  int tmp , cnt ;
+
+  cin>>n>>m>>k;
+
+  if( n >= k )
+    {
+      tmp = n - k + 1 ;
+      cnt = m ;
+      
+      while( cnt > 0 )
+        {
+          tmp = tmp * m % MOD;
+          -- cnt ;
+        }
+      cout<<tmp<<"\n";
+    }
+  else
+    cout<<"1\n";
+  
+  return 0;
+}

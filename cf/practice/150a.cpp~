@@ -1,0 +1,16 @@
+/*
+  CF 150 A
+  2012-02-19
+  gestapolur
+*/
+#include<iostream>
+#define MAXN 1000005
+using namespace std;
+
+bool f[ MAXN ];
+
+int main()
+{
+  
+  return 0;
+}
